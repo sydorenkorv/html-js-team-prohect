@@ -73,6 +73,11 @@
 
 //toggle
 
+.header__toggle-box {
+  display: flex;
+  align-items: center;
+}
+
 input[type='checkbox'] {
   @media screen and (max-width: 1279px) {
     display: none;
@@ -82,7 +87,7 @@ input[type='checkbox'] {
   visibility: hidden;
 }
 
-label {
+.header__toggle {
   @media screen and (max-width: 1279px) {
     display: none;
   }
@@ -95,14 +100,9 @@ label {
   display: block;
   border-radius: 20px;
   position: relative;
-  &:before {
-    content: 'AM';
-    position: absolute;
-    color: black;
-  }
 }
 
-label:after {
+.header__toggle:after {
   content: '';
   position: absolute;
   top: 1px;
@@ -116,13 +116,29 @@ label:after {
   background-color: #fd5103;
 }
 
-input:checked + label:after {
+input:checked + .header__toggle:after {
   left: calc(100% - 2px);
   transform: translateX(-100%);
 }
 
-label:active:after {
+.header__toggle:active:after {
   width: 25px;
 }
 
-// General settings, to place into separate file
+.header__toggle-light,
+.header__toggle-dark {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.header__toggle-light {
+  margin-right: 12px;
+}
+
+.header__toggle-dark {
+  margin-left: 12px;
+  color: #5f6775;
+}
