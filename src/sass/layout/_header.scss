@@ -74,8 +74,11 @@
 //toggle
 
 .header__toggle-box {
-  display: flex;
-  align-items: center;
+  display: none;
+  @media screen and (min-width: 1279px) {
+    display: flex;
+    align-items: center;
+  }
 }
 
 input[type='checkbox'] {
@@ -134,11 +137,6 @@ input:checked + .header__toggle:after {
   line-height: 24px;
 }
 
-.header__toggle-light {
-  margin-right: 12px;
-}
-
 .header__toggle-dark {
-  margin-left: 12px;
   color: #5f6775;
 }
