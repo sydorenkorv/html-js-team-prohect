@@ -1,0 +1,62 @@
+.cocktails__container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.cocktails__title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.91;
+
+  /* Black */
+
+  color: #202025;
+}
+
+.cocktails__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fd5103;
+  border-radius: 4px;
+  width: 280px;
+}
+
+.cocktails__img {
+  margin-bottom: 48px;
+}
+
+.cocktails__name {
+  margin-bottom: 16px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.62;
+
+  /* Black */
+
+  color: #202025;
+}
+
+.cocktails__buttons {
+  width: 100%;
+  padding: 0px 21px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cocktails__buttons .button {
+  width: 108px;
+  height: 39px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+
+  text-align: center;
+  letter-spacing: 0.02em;
+}
