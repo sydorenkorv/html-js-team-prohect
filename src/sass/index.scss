@@ -2,6 +2,9 @@
 @import './utils/variables';
 @import './common';
 @import './layout/general';
+@import './layout/utils/common';
+@import './layout/utils/general';
+@import './layout/utils/palette';
 
 @import './layout/body';
 @import './layout/header';
