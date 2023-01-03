@@ -4,7 +4,7 @@
 }
 
 .cocktails__title {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
   font-size: 22px;
@@ -13,6 +13,11 @@
   /* Black */
 
   color: #202025;
+}
+
+.cocktails__list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .cocktails__card {
@@ -31,7 +36,7 @@
 
 .cocktails__name {
   margin-bottom: 16px;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
   font-size: 26px;
