@@ -35,11 +35,14 @@ for (let letter of alphabet) {
 // alphabet
 
 const searchAlphabet = document.querySelectorAll(".hero__alphabets-button")
+let current_page = 1;
+let rows = 10;
 
 
 
 // event on Alphabet click
 for (var i = 0; i < searchAlphabet.length; i++) {
+  
   searchAlphabet[i].addEventListener('click', function () {
       clearAll()
     selectedButton = this.value
