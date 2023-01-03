@@ -1,0 +1,99 @@
+.modal {
+  position: relative;
+  padding: 40px 20px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.cocktail {
+  padding: 40px 20px;
+  font-size: 16px;
+  color: $textClGrayForLight;
+
+  @media screen and (min-width: $tablet) {
+    padding: 0;
+  }
+}
+
+.cocktail__title {
+  margin-bottom: 20px;
+
+  font-family: 'Roboto';
+  font-weight: 900;
+  font-size: 32px;
+  line-height: calc(38 / 32);
+  color: $textColorDark;
+}
+
+.cocktail__subtitle {
+  margin-bottom: 20px;
+
+  font-weight: 600;
+  line-height: calc(26 / 16);
+  color: $textColorDark;
+  text-transform: uppercase;
+}
+
+.cocktail__desc-wrapper {
+  margin-bottom: 32px;
+}
+
+.cocktail__desc {
+  line-height: calc(28 / 16);
+}
+
+.cocktail__img-wrapper {
+  margin-bottom: 22px;
+  width: 280px;
+  height: 280px;
+}
+
+.cocktail__img {
+  width: 100%;
+  height: 100%;
+}
+
+.cocktail__info-text {
+  margin-bottom: 8px;
+
+  font-weight: 600;
+  line-height: calc(24 / 16);
+  color: #000917;
+  text-transform: uppercase;
+}
+
+.cocktail__amount {
+  margin-bottom: 8px;
+
+  font-weight: 300;
+  font-size: 14px;
+  line-height: calc(21 / 14);
+  color: $textColorDark;
+}
+
+.cocktail__title-tablet {
+  display: none;
+}
+
+.cocktail__ingredients {
+  line-height: calc(26 / 16);
+}
+
+.cocktail__info-block {
+  margin-bottom: 32px;
+}
+
+.cocktail__button {
+  padding: 12px 24px;
+
+  font-family: 'Roboto';
+  font-size: 20px;
+  line-height: 24px;
+
+  color: $extraDecorColor;
+  background-color: $btnAccentBgColor;
+}
