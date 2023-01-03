@@ -35,8 +35,7 @@ for (let letter of alphabet) {
 // alphabet
 
 const searchAlphabet = document.querySelectorAll(".hero__alphabets-button")
-let current_page = 1;
-let rows = 10;
+
 
 
 
@@ -56,14 +55,15 @@ for (var i = 0; i < searchAlphabet.length; i++) {
 
 function renderGallery(val) {
   let renderList = val.drinks.map(drink => drink)
-  // if (window.screen.width >= 768) { 
+  // if (window.screen.width >= 768) {
   //   renderList = renderList.slice(1, 3)
   // }
   
   const markup = galleryCard(renderList)
   galleryList.insertAdjacentHTML('beforeend', markup);
-  console.log(renderList)  
+  console.log(renderList)
   }
+
  
 
 //fetch cocktails by letter
