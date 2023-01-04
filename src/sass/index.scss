@@ -1,8 +1,13 @@
-@import './common';
-@import './layout/general';
+@import './utils/fonts';
+@import './utils/variables';
+
+@import './layout/utils/common';
+@import './layout/utils/general';
+@import './layout/utils/palette';
 
 @import './layout/body';
 @import './layout/header';
 @import './layout/hero';
 @import './layout/cocktails';
 @import './layout/footer';
+@import './layout/modal';

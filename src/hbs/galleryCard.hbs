@@ -1,0 +1,23 @@
+
+{{#each this}}
+<li class="cocktails__list-item">
+    <div class="cocktail-card">
+        <div class="cocktail-card__img-wrapper">
+            <img class="cocktail-card__img" src="{{this.strDrinkThumb}}" alt="cocktail" class="cocktails__img" />
+        </div>
+        <p class="cocktail-card__name">{{this.strDrink}}</p>
+        <div class="cocktail-card__btns-block">
+            <button class="button cocktail-card__btn cocktail-card__btn--accent">
+                Learn more
+            </button>
+            <button class="button cocktail-card__btn cocktail-card__btn--transp cocktail-card__btn--centered">
+                <span class="">Add to</span>
+                <svg class="cocktail-card__heart-icon" width="21" height="19">
+                    <use href="./images/svg/icons-sprite.svg#heart"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</li>
+{{/each}}
+
