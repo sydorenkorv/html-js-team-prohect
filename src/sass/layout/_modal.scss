@@ -1,21 +1,44 @@
 .modal {
   position: relative;
+
+  margin: 0 auto;
   padding: 40px 20px;
+
+  width: 100%;
+
+  font-size: 16px;
+  color: $textClGrayForLight;
+
+  @media screen and (min-width: $mobile) {
+    width: 320px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    padding: 40px 28px 28px;
+
+    width: 822px;
+  }
 }
 
 .close-btn {
   position: absolute;
   top: 16px;
   right: 16px;
+
+  @media screen and (min-width: $tablet) {
+    top: 12px;
+    right: 12px;
+  }
 }
 
-.cocktail {
-  padding: 40px 20px;
-  font-size: 16px;
-  color: $textClGrayForLight;
+.cocktail__main-content {
+  margin-bottom: 32px;
 
   @media screen and (min-width: $tablet) {
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
   }
 }
 
@@ -27,19 +50,37 @@
   font-size: 32px;
   line-height: calc(38 / 32);
   color: $textColorDark;
+
+  @media screen and (min-width: $tablet) {
+    margin: 0 0 28px 292px;
+    order: 1;
+  }
 }
 
-.cocktail__subtitle {
+.cocktail__instruction {
   margin-bottom: 20px;
 
   font-weight: 600;
   line-height: calc(26 / 16);
   color: $textColorDark;
   text-transform: uppercase;
+
+  @media screen and (min-width: $tablet) {
+    color: #000917;
+    margin-bottom: 24px;
+  }
+  @media screen and (min-width: $desktop) {
+    color: $textColorDark;
+  }
 }
 
 .cocktail__desc-wrapper {
   margin-bottom: 32px;
+  @media screen and (min-width: $tablet) {
+    order: 3;
+    margin: 0;
+    width: 615px;
+  }
 }
 
 .cocktail__desc {
@@ -48,8 +89,20 @@
 
 .cocktail__img-wrapper {
   margin-bottom: 22px;
-  width: 280px;
-  height: 280px;
+  width: 100%;
+  @media screen and (min-width: $mobile) {
+    width: 280px;
+    height: 280px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 288px;
+    height: 320px;
+    margin: 0;
+  }
 }
 
 .cocktail__img {
@@ -64,9 +117,13 @@
   line-height: calc(24 / 16);
   color: #000917;
   text-transform: uppercase;
+
+  @media screen and (min-width: $desktop) {
+    color: $textColorDark;
+  }
 }
 
-.cocktail__amount {
+.cocktail__info-amount {
   margin-bottom: 8px;
 
   font-weight: 300;
@@ -80,14 +137,20 @@
 }
 
 .cocktail__ingredients {
+  padding-left: 10px;
   line-height: calc(26 / 16);
 }
 
 .cocktail__info-block {
-  margin-bottom: 32px;
+  @media screen and (min-width: $tablet) {
+    order: 2;
+    margin-left: 292px;
+    margin-bottom: 52px;
+  }
 }
 
 .cocktail__button {
+  display: block;
   padding: 12px 24px;
 
   font-family: 'Roboto';
@@ -96,4 +159,14 @@
 
   color: $extraDecorColor;
   background-color: $btnAccentBgColor;
+  border-radius: 4px;
+
+  @media screen and (min-width: $tablet) {
+    margin-left: auto;
+  }
+}
+
+.cocktail__ingredients > li::marker {
+  content: '✶';
+  color: $textColorDark;
 }
