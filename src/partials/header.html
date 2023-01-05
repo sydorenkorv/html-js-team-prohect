@@ -1,33 +1,56 @@
 <header class="header">
   <container class="container container-header">
-    <a href="#" class="logo"
-      ><img src="./images/logo.png" alt="" height="34px"
-    /></a>
-    <ul class="header__nav-list">
-      <li class="header__nav-item">Home</li>
-      <li class="header__nav-item">Favorite</li>
-    </ul>
-    <form action="" class="header__form">
-      <button type="submit" class="searchButton"></button>
-      <input type="text" class="header__search" placeholder="Search" />
-    </form>
-    <button class="burger-btn button">
-      <svg
-        width="30"
-        height="16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect width="30" height="2" rx="1" fill="#000" />
-        <rect y="7" width="30" height="2" rx="1" fill="#000" />
-        <rect y="14" width="30" height="2" rx="1" fill="#000" />
-      </svg>
-    </button>
-    <div class="header__toggle-box">
-      <input type="checkbox" id="switch" />
-      <p class="header__toggle-light">Light</p>
-      <label for="switch" class="header__toggle">Toggle</label>
-      <p class="header__toggle-dark">Dark</p>
+    <nav class="header__nav">
+      <!-- <a class="logo" href="#">
+        <img class="logo__img" src="./images/logo.png" alt="logo"
+      /></a> -->
+      <a class="logo" href="#"
+        >COCKTAILS
+        <img class="logo__img" src="./images/logo-icon.png" alt="logo" />
+      </a>
+      <ul class="header__nav-list">
+        <li class="header__nav-item"><a href="#">Home</a></li>
+        <li class="header__nav-item">
+          <a class="header__item-favorite" href="">Favorite</a>
+          <div class="header__box-favorite">
+            <a class="header__favorite" href="">Favorite cocktails</a>
+            <a class="header__favorite" href="">Favorite ingredients</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="header__box">
+      <form class="header__form" action="">
+        <button class="searchButton" type="submit">
+          <svg class="searchButton__icon" width="24" height="24">
+            <use href="./images/hero/symbol-defs.svg#icon-search"></use>
+          </svg>
+        </button>
+        <input
+          class="header__search"
+          name="search"
+          type="text"
+          placeholder="Search"
+        />
+      </form>
+      <button class="burger-btn button">
+        <svg
+          width="30"
+          height="16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="30" height="2" rx="1" fill="#000" />
+          <rect y="7" width="30" height="2" rx="1" fill="#000" />
+          <rect y="14" width="30" height="2" rx="1" fill="#000" />
+        </svg>
+      </button>
+      <div class="header__toggle-box">
+        <input id="switch" type="checkbox" />
+        <p class="header__toggle-light">Light</p>
+        <label class="header__toggle" for="switch"></label>
+        <p class="header__toggle-dark">Dark</p>
+      </div>
     </div>
   </container>
 </header>
