@@ -7,3 +7,11 @@ export async function getData(){
 	drinksData = cocktail.drinks
 }
 getData()
+
+
+
+
+
+
+
+
