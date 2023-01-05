@@ -1,6 +1,8 @@
-import './renderGallery'
-import { getData } from '../api';
+// import './renderGallery'
+// import { getData } from '../api';
 import { renderGallery } from './renderGallery';
+
+
 
 const selectMobileEl = document.querySelector('.hero__select-list');
 const selectValue = document.querySelector('.hero__select-choose');
@@ -96,7 +98,14 @@ for (let letter of alphabet) {
 
 //render
 
+const apiURL = 'https://thecocktaildb.com/api/json/v1/1'
 
+
+export async function getData(letter){
+	const response = await fetch(`${apiURL}/search.php?f=${letter}`);
+	const cocktail = await response.json()
+	drinksData = cocktail.drinks
+}
 
 
 
@@ -106,7 +115,8 @@ for (var i = 0; i < searchAlphabet.length; i++) {
   searchAlphabet[i].addEventListener('click', function () {
 
     selectedButton = this.value
-    getData(selectedButton).then(selectedButton => renderGallery(selectedButton))
+      getData(selectedButton)
+
 
   });
 

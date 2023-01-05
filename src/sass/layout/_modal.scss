@@ -7,7 +7,7 @@
   width: 100%;
 
   font-size: 16px;
-  color: $textClGrayForLight;
+  color: inherit;
 
   @media screen and (min-width: $mobile) {
     width: 320px;
@@ -49,7 +49,7 @@
   font-weight: 900;
   font-size: 32px;
   line-height: calc(38 / 32);
-  color: $textColorDark;
+  color: inherit;
 
   @media screen and (min-width: $tablet) {
     margin: 0 0 28px 292px;
@@ -62,7 +62,7 @@
 
   font-weight: 600;
   line-height: calc(26 / 16);
-  color: $textColorDark;
+  color: inherit;
   text-transform: uppercase;
 
   @media screen and (min-width: $tablet) {
@@ -70,7 +70,7 @@
     margin-bottom: 24px;
   }
   @media screen and (min-width: $desktop) {
-    color: $textColorDark;
+    color: inherit;
   }
 }
 
@@ -119,7 +119,7 @@
   text-transform: uppercase;
 
   @media screen and (min-width: $desktop) {
-    color: $textColorDark;
+    color: inherit;
   }
 }
 
@@ -129,7 +129,7 @@
   font-weight: 300;
   font-size: 14px;
   line-height: calc(21 / 14);
-  color: $textColorDark;
+  color: inherit;
 }
 
 .cocktail__title-tablet {
@@ -168,5 +168,5 @@
 
 .cocktail__ingredients > li::marker {
   content: '✶';
-  color: $textColorDark;
+  color: inherit;
 }

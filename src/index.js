@@ -1,6 +1,7 @@
 
 import './js/render/alphabet'
 import './js/render/renderGallery'
+import './js/modeToggle'
 
 // // hero
 

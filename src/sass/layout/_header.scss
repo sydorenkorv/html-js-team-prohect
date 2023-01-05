@@ -83,7 +83,7 @@
     font-family: 'Poppins';
     font-size: 18px;
     line-height: 1.33;
-    color: #202025;
+
     display: flex;
     gap: 60px;
   }
@@ -148,6 +148,7 @@
   line-height: 1.71;
   padding: 8px;
   outline: none;
+  background-color: inherit;
 
   &::placeholder {
     color: #5f677566;

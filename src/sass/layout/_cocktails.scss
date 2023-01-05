@@ -11,7 +11,7 @@
   font-size: 22px;
   line-height: 1.91;
 
-  color: $textColorDark;
+  color: inherit;
 
   @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
     margin-bottom: 56px;

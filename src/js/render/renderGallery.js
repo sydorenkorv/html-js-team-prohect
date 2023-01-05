@@ -1,8 +1,10 @@
 
+// import './alphabet'
 const apiURL = 'https://thecocktaildb.com/api/json/v1/1'
 
 
-export async function getData(){
+
+async function getData(){
 	const response = await fetch(`${apiURL}/search.php?f=a`);
 	const cocktail = await response.json()
 	drinksData = cocktail.drinks
@@ -64,7 +66,7 @@ function nextPage() {
 }
 
 async function renderButtons() {
-	await getData('a');
+	await getData();
 	let buttonCount = Math.ceil(drinksData.length / pageSize);
 	console.log(buttonCount)
 for (let i = 1; i <= buttonCount; i++) {
