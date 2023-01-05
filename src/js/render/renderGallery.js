@@ -36,8 +36,19 @@ async function getData(letter){
 //   }
 // }
 
+const w = window.innerWidth;
+const h = window.innerHeight;
 
-let pageSize = 10;
+let pageSize = 3;
+
+if (w > 768 && w < 1199) {
+    pageSize = 6;
+}
+else if (w > 1199) {
+    pageSize = 9;
+}
+else{ pageSize = 3}
+
 let currentPage = 1;
 let drinksData = []
 
