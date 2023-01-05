@@ -4,26 +4,61 @@ const apiURL = 'https://thecocktaildb.com/api/json/v1/1'
 
 
 
-async function getData(){
-	const response = await fetch(`${apiURL}/search.php?f=a`);
+
+
+const searchAlphabet = document.querySelectorAll('.hero__alphabets-button')
+
+
+    for (var i = 0; i < searchAlphabet.length; i++) {
+  
+        searchAlphabet[i].addEventListener('click', async function () {
+            const letter = this.value
+         
+        await getData(letter)
+       await renderGallery()
+            await renderButtons()
+
+
+        });
+
+}
+
+    
+async function getData(letter){
+	const response = await fetch(`https://thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
 	const cocktail = await response.json()
 	drinksData = cocktail.drinks
 }
+
+// function clearAll() {
+//   while (galleryList.firstChild) {
+//     galleryList.firstChild.remove();
+//   }
+// }
+
 
 let pageSize = 10;
 let currentPage = 1;
 let drinksData = []
 
+
+
 const paginationNumber = document.getElementById("pagination-numbers");
 
+function clearAll() {
+  while (paginationNumber.firstChild) {
+    paginationNumber.firstChild.remove();
+  }
+}
 
+ async function renderGallery() {
 
-export async function renderGallery() {
-	await getData();
 	let cardDrink = "";
 	drinksData.filter((row, index) => {
 		let start = (currentPage - 1) * pageSize
-		let end = currentPage * pageSize
+        let end = currentPage * pageSize
+        console.log(drinksData)
+        
 
 		if (index >= start && index < end) return true;
 	}).forEach(drink => {
@@ -50,13 +85,14 @@ cardDrink += `<li class="cocktails__list-item">
 	})
 	document.getElementById("listing-table").innerHTML = cardDrink
 }
-renderGallery()
+
 
 
 function previousPage() {
 	if (currentPage > 1)
-		currentPage--;
-	renderGallery()
+        currentPage--;
+    renderGallery()
+
 }
 
 function nextPage() {
@@ -66,7 +102,7 @@ function nextPage() {
 }
 
 async function renderButtons() {
-	await getData();
+clearAll() 
 	let buttonCount = Math.ceil(drinksData.length / pageSize);
 	console.log(buttonCount)
 for (let i = 1; i <= buttonCount; i++) {
@@ -81,10 +117,10 @@ for (let i = 0; i < buttnNumbers.length; i++) {
 	buttnNumbers[i].addEventListener('click', function () {
 		currentPage = i + 1
 		renderGallery()  
-	})
+    })
 }
 	console.log(buttnNumbers)}
-renderButtons() 
+
 	  
 
 
