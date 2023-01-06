@@ -107,10 +107,9 @@
   color: inherit;
   padding: 12px 0 12px 12px;
   display: block;
-  transition: 250ms;
 
   &:hover {
-    color: #ffffff;
+    color: inherit;
     background-color: #fd5103;
   }
 }
