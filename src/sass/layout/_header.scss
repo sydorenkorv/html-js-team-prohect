@@ -202,7 +202,7 @@ input[type='checkbox'] {
   border-radius: 20px;
   display: block;
   cursor: pointer;
-  transition: 300 ms;
+  transition: 300ms;
 }
 
 .header__toggle:after {
@@ -214,13 +214,13 @@ input[type='checkbox'] {
   height: 16px;
   border-radius: 50%;
   background-color: #fd5103;
-  transition: 300 ms;
+  transition: 300ms;
 }
 
 input:checked ~ .header__toggle {
   background-color: #fd5103;
   border-color: #fff;
-  transition: 300 ms;
+  transition: 300ms;
 }
 
 input:checked ~ .header__toggle:after {
