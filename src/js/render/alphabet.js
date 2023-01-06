@@ -1,6 +1,10 @@
-import './renderGallery'
-import { getData } from '../api';
-import { renderGallery } from './renderGallery';
+// import './renderGallery'
+// import { getData } from '../api';
+// import { renderGallery } from './renderGallery';
+
+// import { renderGallery } from "./renderGallery";
+
+
 
 const selectMobileEl = document.querySelector('.hero__select-list');
 const selectValue = document.querySelector('.hero__select-choose');
@@ -96,18 +100,28 @@ for (let letter of alphabet) {
 
 //render
 
+const apiURL = 'https://thecocktaildb.com/api/json/v1/1'
+
+
+// export async function getData(letter){
+// 	const response = await fetch(`https://thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
+// 	const cocktail = await response.json()
+// 	drinksData = cocktail.drinks
+// }
 
 
 
+// const searchAlphabet = document.querySelectorAll('.hero__alphabets-button')
+    
 
-const searchAlphabet = document.querySelectorAll('.hero__alphabets-button')
-for (var i = 0; i < searchAlphabet.length; i++) {
+//     for (var i = 0; i < searchAlphabet.length; i++) {
   
-  searchAlphabet[i].addEventListener('click', function () {
+//         searchAlphabet[i].addEventListener('click', function () {
+// const letter = this.value
+// getData(letter)
+// renderGallery()
 
-    selectedButton = this.value
-    getData(selectedButton).then(selectedButton => renderGallery(selectedButton))
+//         });
 
-  });
+//     }
 
-  }

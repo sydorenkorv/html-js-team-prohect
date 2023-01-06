@@ -20,6 +20,7 @@
   line-height: 1.91;
   margin-bottom: 60px;
   width: 300;
+  color: #fd5103;
 
   @media screen and (min-width: 768px) {
     font-size: 26px;
@@ -86,7 +87,7 @@
   line-height: 2;
   letter-spacing: 0.02em;
   text-align: center;
-  color: #000000cc;
+  color: inherit;
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {

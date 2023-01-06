@@ -83,7 +83,7 @@
     font-family: 'Poppins';
     font-size: 18px;
     line-height: 1.33;
-    color: #202025;
+
     display: flex;
     gap: 60px;
   }
@@ -104,7 +104,7 @@
 .header__favorite {
   font-size: 18px;
   line-height: 1.33;
-  color: #000000;
+  color: inherit;
   padding: 12px 0 12px 12px;
   display: block;
 
@@ -139,7 +139,7 @@
 .header__search {
   width: 248px;
   height: 40px;
-
+  color: inherit;
   border: 1px solid #fd5103;
   border-radius: 0 4px 4px 0;
   border-left: none;
@@ -148,6 +148,7 @@
   line-height: 1.71;
   padding: 8px;
   outline: none;
+  background-color: inherit;
 
   &::placeholder {
     color: #5f677566;

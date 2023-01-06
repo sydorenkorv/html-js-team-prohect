@@ -1,32 +1,58 @@
 
+// import './alphabet'
 const apiURL = 'https://thecocktaildb.com/api/json/v1/1'
+import { drinksData } from "../api";
 
 
-export async function getData(){
-	const response = await fetch(`${apiURL}/search.php?f=a`);
-	const cocktail = await response.json()
-	drinksData = cocktail.drinks
+
+
+
+
+// function clearAll() {
+//   while (galleryList.firstChild) {
+//     galleryList.firstChild.remove();
+//   }
+// }
+
+const w = window.innerWidth;
+const h = window.innerHeight;
+
+let pageSize = 3;
+
+if (w > 768 && w < 1199) {
+    pageSize = 6;
 }
+else if (w > 1199) {
+    pageSize = 9;
+}
+else{ pageSize = 3}
 
-let pageSize = 10;
 let currentPage = 1;
 let drinksData = []
 
+
+
 const paginationNumber = document.getElementById("pagination-numbers");
 
+function clearAll() {
+  while (paginationNumber.firstChild) {
+    paginationNumber.firstChild.remove();
+  }
+}
 
+ export async function renderGallery() {
 
-export async function renderGallery() {
-	await getData();
 	let cardDrink = "";
 	drinksData.filter((row, index) => {
 		let start = (currentPage - 1) * pageSize
-		let end = currentPage * pageSize
+        let end = currentPage * pageSize
+        console.log(drinksData)
+        
 
 		if (index >= start && index < end) return true;
 	}).forEach(drink => {
 cardDrink += `<li class="cocktails__list-item">
-    <div class="cocktail-card">
+    <div class="cocktail-card" data-id="${drink.idDrink}">
         <div class="cocktail-card__img-wrapper">
             <img class="cocktail-card__img" src="${drink.strDrinkThumb}" alt="cocktail" class="cocktails__img" />
         </div>
@@ -48,13 +74,13 @@ cardDrink += `<li class="cocktails__list-item">
 	})
 	document.getElementById("listing-table").innerHTML = cardDrink
 }
-renderGallery()
 
 
 function previousPage() {
 	if (currentPage > 1)
-		currentPage--;
-	renderGallery()
+        currentPage--;
+    renderGallery()
+
 }
 
 function nextPage() {
@@ -63,8 +89,8 @@ function nextPage() {
 	renderGallery()
 }
 
-async function renderButtons() {
-	await getData('a');
+export async function renderButtons() {
+clearAll() 
 	let buttonCount = Math.ceil(drinksData.length / pageSize);
 	console.log(buttonCount)
 for (let i = 1; i <= buttonCount; i++) {
@@ -79,10 +105,10 @@ for (let i = 0; i < buttnNumbers.length; i++) {
 	buttnNumbers[i].addEventListener('click', function () {
 		currentPage = i + 1
 		renderGallery()  
-	})
+    })
 }
 	console.log(buttnNumbers)}
-renderButtons() 
+
 	  
 
 
