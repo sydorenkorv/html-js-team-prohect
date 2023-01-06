@@ -13,7 +13,7 @@
 
   font-size: 16px;
   color: $textClGrayForLight;
-  background-color: #fff;
+  background-color: inherit;
 
   @media screen and (min-width: $mobile) {
     width: 320px;
