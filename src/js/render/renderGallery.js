@@ -1,34 +1,12 @@
 
 // import './alphabet'
 const apiURL = 'https://thecocktaildb.com/api/json/v1/1'
+import { drinksData } from "../api";
 
 
 
 
 
-const searchAlphabet = document.querySelectorAll('.hero__alphabets-button')
-
-
-    for (var i = 0; i < searchAlphabet.length; i++) {
-  
-        searchAlphabet[i].addEventListener('click', async function () {
-            const letter = this.value
-         
-        await getData(letter)
-       await renderGallery()
-            await renderButtons()
-
-
-        });
-
-}
-
-    
-async function getData(letter){
-	const response = await fetch(`https://thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
-	const cocktail = await response.json()
-	drinksData = cocktail.drinks
-}
 
 // function clearAll() {
 //   while (galleryList.firstChild) {
@@ -62,7 +40,7 @@ function clearAll() {
   }
 }
 
- async function renderGallery() {
+ export async function renderGallery() {
 
 	let cardDrink = "";
 	drinksData.filter((row, index) => {
@@ -98,7 +76,6 @@ cardDrink += `<li class="cocktails__list-item">
 }
 
 
-
 function previousPage() {
 	if (currentPage > 1)
         currentPage--;
@@ -112,7 +89,7 @@ function nextPage() {
 	renderGallery()
 }
 
-async function renderButtons() {
+export async function renderButtons() {
 clearAll() 
 	let buttonCount = Math.ceil(drinksData.length / pageSize);
 	console.log(buttonCount)
