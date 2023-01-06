@@ -52,7 +52,7 @@ function clearAll() {
 		if (index >= start && index < end) return true;
 	}).forEach(drink => {
 cardDrink += `<li class="cocktails__list-item">
-    <div class="cocktail-card">
+    <div class="cocktail-card" data-id="${drink.idDrink}">
         <div class="cocktail-card__img-wrapper">
             <img class="cocktail-card__img" src="${drink.strDrinkThumb}" alt="cocktail" class="cocktails__img" />
         </div>
