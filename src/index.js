@@ -1,6 +1,7 @@
-
-import './js/render/alphabet'
-import './js/render/renderGallery'
+import './js/render/alphabet';
+import './js/render/renderGallery';
+import './js/modals/modalAboutCocktail';
+import './js/modals/modalAboutIngredient';
 
 // // hero
 
@@ -36,23 +37,17 @@ import './js/render/renderGallery'
 
 // const galleryList = document.querySelector('.cocktails__list');
 
-
 // hero
 
 //alphabet
-
 
 ///////////////////////////////////////////////////////////
 
 // alphabet
 
-const searchAlphabet = document.querySelectorAll(".hero__alphabets-button")
-
-
-
+const searchAlphabet = document.querySelectorAll('.hero__alphabets-button');
 
 // event on Alphabet click
-
 
 // render gallery fx
 
@@ -61,13 +56,11 @@ const searchAlphabet = document.querySelectorAll(".hero__alphabets-button")
 //   // if (window.screen.width >= 768) {
 //   //   renderList = renderList.slice(1, 3)
 //   // }
-  
+
 //   const markup = galleryCard(renderList)
 //   galleryList.insertAdjacentHTML('beforeend', markup);
 //   console.log(renderList)
 //   }
-
- 
 
 // //fetch cocktails by letter
 
@@ -75,12 +68,10 @@ const searchAlphabet = document.querySelectorAll(".hero__alphabets-button")
 
 //     const URL = `https://www.thecocktaildb.com/api/json/v1`
 
-
 //   let res = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${val}`);
 
 //     let data = res.data;
 //     return data
-
 
 // }
 
@@ -94,7 +85,6 @@ function clearAll() {
 
 // function renderGallery(name) {
 //   const renderList = name.hits.map(hit => hit);
-
 
 //   const markup = galleryCard(renderList);
 //   cardList.insertAdjacentHTML('beforeend', markup);
