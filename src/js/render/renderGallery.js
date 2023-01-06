@@ -19,6 +19,8 @@ const h = window.innerHeight;
 
 let pageSize = 3;
 
+let currentPage = 1;
+
 if (w > 768 && w < 1199) {
     pageSize = 6;
 }
@@ -27,8 +29,7 @@ else if (w > 1199) {
 }
 else{ pageSize = 3}
 
-let currentPage = 1;
-let drinksData = []
+
 
 
 
