@@ -1,13 +1,19 @@
 .modal {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+
+  display: none;
 
   margin: 0 auto;
   padding: 40px 20px;
-
   width: 100%;
 
   font-size: 16px;
   color: inherit;
+  background-color: inherit;
 
   @media screen and (min-width: $mobile) {
     width: 320px;
@@ -15,30 +21,25 @@
 
   @media screen and (min-width: $tablet) {
     padding: 40px 28px 28px;
-
     width: 822px;
   }
+}
+
+.is-active {
+  display: block;
 }
 
 .close-btn {
   position: absolute;
   top: 16px;
   right: 16px;
+  width: 32px;
+  height: 32px;
+  outline: none;
 
   @media screen and (min-width: $tablet) {
     top: 12px;
     right: 12px;
-  }
-}
-
-.cocktail__main-content {
-  margin-bottom: 32px;
-
-  @media screen and (min-width: $tablet) {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40px;
   }
 }
 
@@ -57,6 +58,26 @@
   }
 }
 
+.cocktail__main-content {
+  margin-bottom: 32px;
+
+  @media screen and (min-width: $tablet) {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+}
+
+.cocktail__desc-wrapper {
+  margin-bottom: 32px;
+  @media screen and (min-width: $tablet) {
+    order: 3;
+    margin: 0;
+    width: 615px;
+  }
+}
+
 .cocktail__instruction {
   margin-bottom: 20px;
 
@@ -66,11 +87,10 @@
   text-transform: uppercase;
 
   @media screen and (min-width: $tablet) {
-    color: #000917;
     margin-bottom: 24px;
   }
   @media screen and (min-width: $desktop) {
-    color: inherit;
+    color: $textColorDark;
   }
 }
 
@@ -110,6 +130,14 @@
   height: 100%;
 }
 
+.cocktail__info-block {
+  @media screen and (min-width: $tablet) {
+    order: 2;
+    margin-left: 292px;
+    margin-bottom: 52px;
+  }
+}
+
 .cocktail__info-text {
   margin-bottom: 8px;
 
@@ -141,14 +169,6 @@
   line-height: calc(26 / 16);
 }
 
-.cocktail__info-block {
-  @media screen and (min-width: $tablet) {
-    order: 2;
-    margin-left: 292px;
-    margin-bottom: 52px;
-  }
-}
-
 .cocktail__button {
   display: block;
   padding: 12px 24px;
@@ -169,4 +189,8 @@
 .cocktail__ingredients > li::marker {
   content: '✶';
   color: inherit;
+}
+
+.cocktail__ingredients a:hover {
+  color: #fd5103;
 }
