@@ -94,7 +94,8 @@ export async function renderButtons() {
 clearAll() 
 	let buttonCount = Math.ceil(drinksData.length / pageSize);
 	console.log(buttonCount)
-for (let i = 1; i <= buttonCount; i++) {
+
+    for (let i = 1; i <= buttonCount; i++) {
 	var button = document.createElement("button");
 	button.classList.add("selector")
         button.innerHTML = i;

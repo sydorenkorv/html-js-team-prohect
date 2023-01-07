@@ -68,11 +68,6 @@
   @media screen and (max-width: $desktop) {
     padding-bottom: 28px;
   }
-  &:hover,
-  &:focus {
-    transform: scale(102%);
-    transition: 250ms;
-  }
 }
 
 .cocktail-card__img-wrapper {
