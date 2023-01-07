@@ -1,43 +1,35 @@
-<div class="modal cocktail js-cocktail-modal">
-  <button class="button close-btn js-cocktail-close-btn" type="button">
-    <svg width="32" height="32">
-      <use href="./images/svg/icons-sprite.svg#close"></use>
-    </svg>
-  </button>
-  <p class="cocktail__title js-cocktail-title">Negroni</p>
+<div class="backdrop is-hidden">
+  <div class="modal cocktail js-cocktail-modal">
+    <button class="button close-btn js-cocktail-close-btn" type="button">
+      <svg width="32" height="32">
+        <use href="./images/svg/icons-sprite.svg#close"></use>
+      </svg>
+    </button>
+    <p class="cocktail__title js-cocktail-title"></p>
 
-  <div class="cocktail__main-content">
-    <div class="cocktail__desc-wrapper">
-      <p class="cocktail__instruction">Instractions:</p>
-      <p class="cocktail__desc js-cocktail-desk">
-        Add the gin, Campari and sweet vermouth to a mixing glass filled with
-        ice, and stir until well-chilled. Strain into a rocks glass filled with
-        large ice cubes. Garnish with an orange peel.
-      </p>
+    <div class="cocktail__main-content">
+      <div class="cocktail__desc-wrapper">
+        <p class="cocktail__instruction">Instractions:</p>
+        <p class="cocktail__desc js-cocktail-desk"></p>
+      </div>
+
+      <div class="cocktail__img-wrapper">
+        <img
+          class="cocktail__img js-cocktail-img"
+          src="./images/ACID.jpg"
+          alt="cocktail"
+        />
+      </div>
+
+      <div class="cocktail__info-block">
+        <p class="cocktail__info-text">INGREDIENTS</p>
+        <p class="cocktail__info-amount">Per cocktail</p>
+        <ul class="cocktail__ingredients js-cocktail-ingredients"></ul>
+      </div>
     </div>
 
-    <div class="cocktail__img-wrapper">
-      <img
-        class="cocktail__img js-cocktail-img"
-        src="./images/ACID.jpg"
-        alt=""
-      />
-    </div>
-
-    <div class="cocktail__info-block">
-      <p class="cocktail__info-text">INGREDIENTS</p>
-      <p class="cocktail__info-amount">Per cocktail</p>
-      <ul class="cocktail__ingredients js-cocktail-ingredients">
-        <!-- <li><a data-name="Gin">Ice</a></li>
-        <li><a data-name="Grand Marnier">1 ounce gin</a></li>
-        <li><a data-name="Lemon Juice">1 ounce Campari</a></li>
-        <li><a data-name="Grenadine">1 ounce Campari</a></li>
-        <li><a data-name="">1 ounce Campari</a></li> -->
-      </ul>
-    </div>
+    <button class="button cocktail__button js-cocktail-add-btn">
+      Add to favorite
+    </button>
   </div>
-
-  <button class="button cocktail__button js-cocktail-add-btn">
-    Add to favorite
-  </button>
 </div>

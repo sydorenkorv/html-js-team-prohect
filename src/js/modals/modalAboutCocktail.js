@@ -28,7 +28,8 @@ async function getCocktailById(id) {
 
 async function onCocktailInfoOpen(e) {
   if (e.target.nodeName !== 'BUTTON') return;
-  showElement(cocktailModal);
+  // showElement(cocktailModal);
+  toggleModalVisible(cocktailModal.parentNode);
   const parentEl = e.target.closest('[data-id]');
   const cocktailId = parentEl.dataset.id;
   const { drinks } = await getCocktailById(cocktailId);
@@ -39,43 +40,62 @@ async function onCocktailInfoOpen(e) {
 }
 
 function onCocktailInfoClose() {
-  hideElement(cocktailModal);
+  // hideElement(cocktailModal);
+  toggleModalVisible(cocktailModal.parentNode);
 }
 
 function createMarkup(drinks = []) {
-  const markup = drinks
-    .map(
-      drink => `<li><a data-name="${drink.strIngredient1}">${
-        drink.strMeasure1 + drink.strIngredient1
-      }</a></li>
-      <li><a data-name="${drink.strIngredient2}">${
-        drink.strMeasure2 + drink.strIngredient2
-      }</a></li>
-      <li><a data-name="${drink.strIngredient3}">${
-        drink.strMeasure3 + drink.strIngredient3
-      }</a></li>
-      <li><a data-name="${drink.strIngredient4}">${
-        drink.strMeasure4 + drink.strIngredient4
-      }</a></li>
-      <li><a data-name="${drink.strIngredient5}">${
-        drink.strMeasure5 + drink.strIngredient5
-      }</a></li>
-      <li><a data-name="${drink.strIngredient6}">${
-        drink.strMeasure6 + drink.strIngredient6
-      }</a></li>
-      <li><a data-name="${drink.strIngredient7}">${
-        drink.strMeasure7 + drink.strIngredient7
-      }</a></li>
-        `
-    )
-    .join('');
+  let markup = '';
+  for (let i = 1; i <= 15; i += 1) {
+    let ingredient = 'strIngredient' + i;
+    let measure = 'strMeasure' + i;
+
+    if (drinks[0][measure] && drinks[0][ingredient]) {
+      markup += `<li><a data-name="${drinks[0][ingredient]}">${drinks[0][measure]} ${drinks[0][ingredient]}</a></li>`;
+    }
+  }
+  // cocktailIngredientsList.insertAdjacentHTML('beforeend', markup);
   cocktailIngredientsList.innerHTML = markup;
 }
 
-function showElement(elem) {
-  elem.classList.add('is-active');
-}
+// function createMarkup(drinks = []) {
+//   let markup = `<p class="cocktail__title js-cocktail-title">${drinks[0].strDrink}</p>
 
-function hideElement(elem) {
-  elem.classList.remove('is-active');
+//       <div class="cocktail__desc-wrapper">
+//         <p class="cocktail__instruction">Instractions:</p>
+//         <p class="cocktail__desc js-cocktail-desk">
+//           ${drinks[0].strInstructions}
+//         </p>
+//       </div>
+//       <div class="cocktail__img-wrapper">
+//         <img
+//           class="cocktail__img js-cocktail-img"
+//           src="${drinks[0].strDrinkThumb}"
+//           alt="${drinks[0].strDrink}"
+//         />
+//       </div>
+
+//     `;
+//   cocktailModalCloseBtn.innerHTML = markup;
+//   for (let i = 1; i <= 15; i += 1) {
+//     let ingredient = 'strIngredient' + i;
+//     let measure = 'strMeasure' + i;
+
+//     if (drinks[0][measure] && drinks[0][ingredient]) {
+//       const markupList = `<li><a data-name="${drinks[0][ingredient]}">${drinks[0][measure]} ${drinks[0][ingredient]}</a></li>`;
+//       cocktailIngredientsList.innerHTML = markupList;
+//     }
+//   }
+// }
+
+// function showElement(elem) {
+//   elem.classList.add('is-active');
+// }
+
+// function hideElement(elem) {
+//   elem.classList.remove('is-active');
+// }
+
+function toggleModalVisible(elem) {
+  elem.classList.toggle('is-hidden');
 }
