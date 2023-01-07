@@ -51,3 +51,20 @@
 
   border: 2px solid #fd5103;
 }
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.is-hidden {
+  display: none;
+  // visibility: hidden;
+  // opacity: 0;
+  // pointer-events: none;
+}

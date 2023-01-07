@@ -1,11 +1,12 @@
 .modal-ingredient {
   position: absolute;
-  top: 50%;
+  top: 0;
+  // top: 50%;
   left: 50%;
   transform: translateX(-50%);
-  transform: translateY(-50%);
+  // transform: translateY(-50%);
 
-  display: none;
+  // display: none;
 
   margin: 0 auto;
   padding: 40px 20px;
@@ -13,7 +14,7 @@
 
   font-size: 16px;
   color: $textClGrayForLight;
-  background-color: inherit;
+  background-color: #fcfcfc;
 
   @media screen and (min-width: $mobile) {
     width: 320px;
