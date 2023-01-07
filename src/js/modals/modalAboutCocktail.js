@@ -59,3 +59,25 @@ function createMarkup(drinks = []) {
 function toggleModalVisible(elem) {
   elem.classList.toggle('is-hidden');
 }
+
+cocktailModal.parentNode.addEventListener('click', closeModalByClick);
+
+function closeModalByClick(e) {
+  if (e.currentTarget === e.target) {
+    toggleModalVisible(cocktailModal.parentNode);
+  }
+}
+
+// import { ingredientModal } from './modalAboutIngredient';
+const ingredientModal = document.querySelector('.js-ingredient-modal');
+document.addEventListener('keydown', closeModalByEsc);
+
+function closeModalByEsc(e) {
+  if (
+    e.code === 'Escape' &&
+    !cocktailModal.parentNode.classList.contains('is-hidden') &&
+    ingredientModal.parentNode.classList.contains('is-hidden')
+  ) {
+    toggleModalVisible(cocktailModal.parentNode);
+  }
+}

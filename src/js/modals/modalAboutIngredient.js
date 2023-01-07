@@ -5,7 +5,7 @@ function toggleModalVisible(elem) {
   elem.classList.toggle('is-hidden');
 }
 
-const ingredientModal = document.querySelector('.js-ingredient-modal');
+export const ingredientModal = document.querySelector('.js-ingredient-modal');
 const ingredientModalCloseBtn = document.querySelector(
   '.js-ingredient-close-btn'
 );
@@ -46,4 +46,23 @@ function onIngredientlInfoClose() {
 function createMarkup(ingredients = []) {
   const markup = `<li>Type: ${ingredients[0].strType}</li>`;
   ingredientInfo.innerHTML = markup;
+}
+
+ingredientModal.parentNode.addEventListener('click', closeModalByClick);
+
+function closeModalByClick(e) {
+  if (e.currentTarget === e.target) {
+    toggleModalVisible(ingredientModal.parentNode);
+  }
+}
+
+document.addEventListener('keydown', closeModalByButton);
+
+function closeModalByButton(e) {
+  if (
+    e.code === 'Escape' &&
+    !ingredientModal.parentNode.classList.contains('is-hidden')
+  ) {
+    toggleModalVisible(ingredientModal.parentNode);
+  }
 }
