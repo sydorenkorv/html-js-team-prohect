@@ -1,27 +1,10 @@
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.is-hidden {
-  display: none;
-  // visibility: hidden;
-  // opacity: 0;
-  // pointer-events: none;
-}
-
 .modal {
   position: absolute;
-  top: 0;
-  // top: 50%;
+  // top: 0;
+  top: 50%;
   left: 50%;
   transform: translateX(-50%);
-  // transform: translateY(-50%);
-
+  transform: translateY(-50%);
   // display: none;
   margin: 0 auto;
   padding: 40px 20px;
@@ -29,7 +12,7 @@
 
   font-size: 16px;
   color: inherit;
-  background-color: #fff;
+  background-color: #fcfcfc;
 
   @media screen and (min-width: $mobile) {
     width: 320px;
@@ -126,6 +109,8 @@
 .cocktail__img-wrapper {
   margin-bottom: 22px;
   width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
   @media screen and (min-width: $mobile) {
     width: 280px;
     height: 280px;

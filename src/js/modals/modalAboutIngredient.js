@@ -1,12 +1,8 @@
 import axios from 'axios';
 import { cocktailIngredientsList } from './modalAboutCocktail';
 
-function showElement(elem) {
-  elem.classList.add('is-active');
-}
-
-function hideElement(elem) {
-  elem.classList.remove('is-active');
+function toggleModalVisible(elem) {
+  elem.classList.toggle('is-hidden');
 }
 
 const ingredientModal = document.querySelector('.js-ingredient-modal');
@@ -34,7 +30,7 @@ async function getIngredientByName(name) {
 
 async function onIngredientlInfoOpen(e) {
   if (e.target.nodeName !== 'A') return;
-  showElement(ingredientModal);
+  toggleModalVisible(ingredientModal.parentNode);
   const targetIngredient = e.target.dataset.name.toLowerCase();
   const { ingredients } = await getIngredientByName(targetIngredient);
   ingredientName.textContent = ingredients[0].strIngredient;
@@ -44,15 +40,8 @@ async function onIngredientlInfoOpen(e) {
 }
 
 function onIngredientlInfoClose() {
-  hideElement(ingredientModal);
+  toggleModalVisible(ingredientModal.parentNode);
 }
-
-// function markup(ingredients = []) {
-//   const markup = ingredients
-//     .map(ingredient => `<li>Type: ${ingredient.strType}</li>`)
-//     .join('');
-//   ingredientInfo.innerHTML = markup;
-// }
 
 function createMarkup(ingredients = []) {
   const markup = `<li>Type: ${ingredients[0].strType}</li>`;
