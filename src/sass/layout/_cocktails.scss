@@ -68,8 +68,9 @@
   @media screen and (max-width: $desktop) {
     padding-bottom: 28px;
   }
-  &:hover {
-    transform: scale(103%);
+  &:hover,
+  &:focus {
+    transform: scale(102%);
     transition: 250ms;
   }
 }
