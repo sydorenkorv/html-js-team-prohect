@@ -192,3 +192,36 @@
 .cocktail-card__heart-icon {
   fill: transparent;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__button {
+  margin-top: 24px;
+  width: 32px;
+  height: 32px;
+  background: inherit;
+  border: 1px solid #fe7031;
+  border-radius: 50%;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: inherit;
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+  @media screen and (min-width: $tablet) {
+    margin-top: 32px;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 20px;
+    &:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+}
