@@ -52,7 +52,27 @@ async function getData(letter){
 }
 
 
+    
+
+
+const searchForm = document.querySelector('.header__form');
+const input = document.querySelector('.header__search');
+const submitButton = document.querySelector('.searchButton')
+
+
+submitButton.addEventListener('click', async function (e) {
+      e.preventDefault();
+    const name = input.value;
+console.log(input.value)
+        await getByName(name)
+       await renderGallery()
 
 
 
-
+        });
+        
+async function getByName(name){
+	const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
+	const cocktail = await response.json()
+	drinksData = cocktail.drinks
+}
