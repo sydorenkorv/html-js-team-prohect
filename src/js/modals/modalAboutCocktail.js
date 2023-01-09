@@ -28,7 +28,6 @@ async function getCocktailById(id) {
 
 async function onCocktailInfoOpen(e) {
   if (e.target.nodeName !== 'BUTTON') return;
-  // showElement(cocktailModal);
   toggleModalVisible(cocktailModal.parentNode);
   const parentEl = e.target.closest('[data-id]');
   const cocktailId = parentEl.dataset.id;
@@ -37,10 +36,12 @@ async function onCocktailInfoOpen(e) {
   cocktailInstraction.textContent = drinks[0].strInstructions;
   cocktailImg.src = drinks[0].strDrinkThumb;
   createMarkup(drinks);
+  stopScroll();
 }
 
 function onCocktailInfoClose() {
   toggleModalVisible(cocktailModal.parentNode);
+  startScroll();
 }
 
 function createMarkup(drinks = []) {
@@ -58,4 +59,36 @@ function createMarkup(drinks = []) {
 
 function toggleModalVisible(elem) {
   elem.classList.toggle('is-hidden');
+}
+
+cocktailModal.parentNode.addEventListener('click', closeModalByClick);
+
+function closeModalByClick(e) {
+  if (e.currentTarget === e.target) {
+    toggleModalVisible(cocktailModal.parentNode);
+    startScroll();
+  }
+}
+
+// import { ingredientModal } from './modalAboutIngredient';
+const ingredientModal = document.querySelector('.js-ingredient-modal');
+document.addEventListener('keydown', closeModalByEsc);
+
+function closeModalByEsc(e) {
+  if (
+    e.code === 'Escape' &&
+    !cocktailModal.parentNode.classList.contains('is-hidden') &&
+    ingredientModal.parentNode.classList.contains('is-hidden')
+  ) {
+    toggleModalVisible(cocktailModal.parentNode);
+    startScroll();
+  }
+}
+
+function stopScroll() {
+  document.body.style.overflow = 'hidden';
+}
+
+function startScroll() {
+  document.body.style.overflow = 'visible';
 }
