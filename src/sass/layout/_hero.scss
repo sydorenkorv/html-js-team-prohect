@@ -1,15 +1,21 @@
 .hero__container {
   // display: block;
+  width: 320px;
+  margin-bottom: 40px;
+
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: start;
-    height: 465px;
+    width: 768px;
+    height: 294px;
+    margin-bottom: 120px;
   }
 
   @media screen and (min-width: 1280px) {
-    height: 580px;
+    width: 1280px;
+    height: 439px;
   }
 }
 
@@ -214,6 +220,7 @@
   font-size: 16px;
   line-height: 1.35;
   color: #fd5103;
+  cursor: pointer;
 
   width: 93px;
   height: 34px;
@@ -222,13 +229,14 @@
   background-color: inherit;
   padding: 6px 10px;
   display: flex;
-  // justify-content: space-between;
   align-items: center;
   margin: auto;
 }
 
 .hero__select-icon {
   fill: #fd5103;
+  // fill: inherit;
+
   margin-left: auto;
 }
 
@@ -241,6 +249,7 @@
   margin: auto;
   padding: 6.5px 10px;
   text-align: left;
+  cursor: pointer;
 }
 
 .hero__select-option {
@@ -248,8 +257,6 @@
   font-size: 10px;
   line-height: 15px;
   color: #5f6775;
-
-  // padding: 0 10px;
 
   &:not(:last-child) {
     margin-bottom: 13px;
@@ -262,9 +269,26 @@
   }
 }
 
-// body::-webkit-scrollbar {
-//   width: 12px;
-// }
-.is-hidden {
-  display: none;
+.hero__select-box::-webkit-scrollbar {
+  width: 4px;
+}
+
+.hero__select-box::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.hero__select-box::-webkit-scrollbar-thumb {
+  height: 34px;
+  border-radius: 4px;
+  background-color: #5f6775;
+}
+
+.active-letter {
+  color: #fcfcfc;
+  fill: #fcfcfc;
+  background-color: #fd5103;
+}
+
+.active-icon {
+  fill: #fcfcfc;
 }
