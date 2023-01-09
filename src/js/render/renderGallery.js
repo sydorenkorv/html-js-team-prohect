@@ -97,7 +97,7 @@ clearAll()
 
     for (let i = 1; i <= buttonCount; i++) {
 	var button = document.createElement("button");
-	button.classList.add("selector")
+	button.classList.add("selector", "button", "pagination__button")
         button.innerHTML = i;
         paginationNumber.appendChild(button);
 	}
