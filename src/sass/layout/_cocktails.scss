@@ -196,10 +196,22 @@
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 32px;
+  margin-bottom: 60px;
 }
 
+// .pagination__btn-wrapper {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 40px;
+//   height: 40px;
+// }
+
 .pagination__button {
-  margin-top: 24px;
   width: 32px;
   height: 32px;
   background: inherit;
@@ -215,7 +227,6 @@
     margin-right: 8px;
   }
   @media screen and (min-width: $tablet) {
-    margin-top: 32px;
     width: 40px;
     height: 40px;
     font-size: 16px;
@@ -224,4 +235,14 @@
       margin-right: 12px;
     }
   }
+}
+
+.pagination__decor {
+  font-weight: 700;
+  line-height: calc(20 / 16);
+  color: $btnBgColor;
+}
+.pagination__button--active {
+  background-color: $btnBgColor;
+  color: $extraDecorColor;
 }
