@@ -77,6 +77,7 @@ function onToggleSelectOptions() {
 function onOptionClick(e) {
   selectValue.firstElementChild.textContent = e.target.textContent;
   onToggleSelectOptions();
+  activeFill();
 }
 
 // function createMarkup() {
@@ -114,3 +115,8 @@ function onOptionClick(e) {
 //         });
 
 //     }
+
+function activeFill() {
+  selectValue.classList.add('active-letter');
+  selectValue.childNodes[3].classList.add('active-icon');
+}
