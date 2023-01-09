@@ -46,7 +46,7 @@ const searchAlphabet = document.querySelectorAll('.hero__alphabets-button')
 
     
 async function getData(letter){
-	const response = await fetch(`https://thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
+	const response = await fetch(`https://thecocktaildb.com/api/json/v2/9973533/search.php?f=${letter}`);
 	const cocktail = await response.json()
 	drinksData = cocktail.drinks
 }
@@ -72,7 +72,7 @@ console.log(input.value)
         });
         
 async function getByName(name){
-	const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
+	const response = await fetch(`https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=${name}`);
 	const cocktail = await response.json()
 	drinksData = cocktail.drinks
 }
