@@ -1,30 +1,21 @@
 // import './alphabet'
-const apiURL = 'https://thecocktaildb.com/api/json/v1/1';
+import Pagination from 'tui-pagination';
 import { drinksData } from '../api';
 
 let test;
 
+const container = document.getElementById('tui-pagination-container');
+
 // Init pagination
 let cardsPerPage = calcCardsPerPage();
 let currentPage = 1;
-
-const paginationListRef = document.querySelector('.pagination');
-paginationListRef.addEventListener('click', event => {
-  if (event.target.classList.contains('pagination__button')) {
-    console.log(event.target.dataset.page);
-    currentPage = +event.target.dataset.page;
-    renderGallery();
-    renderButtons();
-  }
-});
 
 export async function renderGallery() {
   let cocktailCardsMarkup = '';
 
   // temporary variable to check pagination
   test = [...drinksData, ...drinksData, ...drinksData];
-  console.log(test);
-
+  console.log('data', test);
   test
     .filter((cocktail, index) => {
       let start = (currentPage - 1) * cardsPerPage;
@@ -58,79 +49,25 @@ export async function renderGallery() {
 }
 
 export async function renderButtons() {
-  clearAll();
+  currentPage = 1;
 
-  let paginationMarkup = '';
-  let paginationElQuantity = Math.ceil(test.length / cardsPerPage);
+  const options = {
+    totalItems: test.length,
+    itemsPerPage: cardsPerPage,
+    visiblePages: 3,
+    page: 1,
+    centerAlign: false,
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-last-child',
+  };
+  const pagination = new Pagination(container, options);
 
-  console.log('CurrentPage', currentPage);
-  console.log('Amount of Elements:', paginationElQuantity);
-
-  //  Add prev/next btn if number of pages > 1
-  if (paginationElQuantity > 1) {
-    const arrowMarkup = `<li class="page-item">
-      <button class="page-link button pagination__prevNext" id="prevButton">
-        <svg width="24" height="24">
-            <use href="./images/svg/icons-sprite.svg#arrow"></use>
-         </svg>
-         prev
-      </button>
-    </li>
-    <li class="page-item">
-      <button class="page-link button pagination__prevNext" id="nextButton">
-         <svg width="24" height="24">
-            <use href="../../images/svg/icons-sprite.svg#arrow"></use>
-         </svg>
-         next
-      </button>
-    </li>`;
-    paginationListRef.innerHTML = arrowMarkup;
-    document
-      .querySelector('#prevButton')
-      .addEventListener('click', goToPreviousPage, false);
-
-    document
-      .querySelector('#nextButton')
-      .addEventListener('click', goToNextPage, false);
-  }
-
-  //   Add pagination if number of pages < 7
-  if (paginationElQuantity <= 6) {
-    for (let i = 1; i <= paginationElQuantity; i++) {
-      console.log(i, currentPage);
-      paginationMarkup += createMarkupForPagination(i);
-    }
-    paginationListRef.firstChild.insertAdjacentHTML(
-      'afterend',
-      paginationMarkup
-    );
-    //   Add pagination if number of pages > 6
-  } else {
-    for (let i = 1; i <= 3; i++) {
-      paginationMarkup += createMarkupForPagination(i);
-    }
-
-    paginationMarkup += `<li><span class="pagination__decor">...</span></li>`;
-
-    for (let i = paginationElQuantity - 2; i <= paginationElQuantity; i++) {
-      paginationMarkup += createMarkupForPagination(i);
-    }
-
-    paginationListRef.firstChild.insertAdjacentHTML(
-      'afterend',
-      paginationMarkup
-    );
-  }
+  pagination.on('afterMove', event => {
+    currentPage = event.page;
+    renderGallery();
+  });
 }
 
-// Create markup of pagination
-function createMarkupForPagination(index) {
-  return `<li><button class="selector button pagination__button ${
-    index === currentPage ? 'pagination__button--active' : ''
-  }" data-page="${index}">${index}</button></li>`;
-}
-
-// Calc amount of cards for showing
 function calcCardsPerPage() {
   const width = window.innerWidth;
 
@@ -141,20 +78,4 @@ function calcCardsPerPage() {
   } else {
     return 3;
   }
-}
-
-function clearAll() {
-  paginationListRef.innerHTML = '';
-}
-
-function goToPreviousPage() {
-  if (currentPage > 1) currentPage--;
-  renderGallery();
-  renderButtons();
-}
-
-function goToNextPage() {
-  if (currentPage * cardsPerPage < test.length) currentPage++;
-  renderGallery();
-  renderButtons();
 }
