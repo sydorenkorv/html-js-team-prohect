@@ -39,11 +39,35 @@ for (var i = 0; i < searchAlphabet.length; i++) {
     await renderButtons();
   });
 }
+    
+async function getData(letter){
+	const response = await fetch(`https://thecocktaildb.com/api/json/v2/9973533/search.php?f=${letter}`);
+	const cocktail = await response.json()
+	drinksData = cocktail.drinks
+}
 
-async function getData(letter) {
-  const response = await fetch(
-    `https://thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
-  );
-  const cocktail = await response.json();
-  drinksData = cocktail.drinks;
+
+    
+
+
+const searchForm = document.querySelector('.header__form');
+const input = document.querySelector('.header__search');
+const submitButton = document.querySelector('.searchButton')
+
+
+submitButton.addEventListener('click', async function (e) {
+      e.preventDefault();
+    const name = input.value;
+console.log(input.value)
+        await getByName(name)
+       await renderGallery()
+
+
+
+        });
+        
+async function getByName(name){
+	const response = await fetch(`https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=${name}`);
+	const cocktail = await response.json()
+	drinksData = cocktail.drinks
 }
