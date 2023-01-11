@@ -67,3 +67,4 @@ export async function getByName(name) {
   const cocktail = await response.json();
   drinksData = cocktail.drinks;
 }
+

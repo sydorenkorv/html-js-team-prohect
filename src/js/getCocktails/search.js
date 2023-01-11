@@ -15,23 +15,28 @@ submitButton.addEventListener('click', async function (e) {
     return;
   }
 
-  //   getByName(name)
-  //     .then(({ test }) => {
-  //       if (data.strDrinks === 0) {
-  //         alertNoImagesFound();
-  //       } else {
-  //         renderGallery();
-  //       }
-  //     })
-  //     .catch(error => console.log(error))
-  //     .finally(() => {
-  //       searchForm.reset();
-  //     });
-  else if (!name) {
-    alertNoImagesFound();
-  } else {
+    // getByName(name)
+    //   .then(({ test }) => {
+    //     if (data.strDrinks === 0) {
+    //       alertNoImagesFound();
+    //     } else {
+    //       renderGallery();
+    //     }
+    //   })
+    //   .catch(error => console.log(error))
+    //   .finally(() => {
+    //     searchForm.reset();
+    //   });
+  // else if (!name) {
+  //   alertNoImagesFound();
+  // }
+  else {
     await getByName(name);
-    await renderGallery();
+    if (drinksData === null) {
+      alertNoImagesFound();
+    }
+    else{
+    await renderGallery();}
   }
 
   searchForm.reset();
