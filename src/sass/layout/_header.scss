@@ -1,8 +1,10 @@
 .header {
   margin-bottom: 60px;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 77px;
   }
+
   @media screen and (min-width: 1280px) {
     margin-bottom: 97px;
   }
@@ -30,7 +32,7 @@
   // justify-content: space-between;
   align-items: center;
   padding-top: 20px;
-  width: 320px;
+  // width: 320px;
 
   @media screen and (max-width: 767px) {
     justify-content: space-between;
@@ -39,12 +41,12 @@
   @media screen and (min-width: 768px) {
     position: relative;
     align-items: flex-end;
-    width: 768px;
+    // width: 768px;
   }
 
-  @media screen and (min-width: 1280px) {
-    width: 1280px;
-  }
+  // @media screen and (min-width: 1280px) {
+  //   width: 1280px;
+  // }
 }
 
 .logo {
@@ -52,6 +54,7 @@
   font-family: 'Poppins';
   font-size: 22px;
   line-height: 1.09;
+  text-transform: uppercase;
   color: #fd5103;
   padding-top: 10px;
 
@@ -61,6 +64,7 @@
     padding-top: 0;
     margin-right: 190px;
   }
+
   @media screen and (min-width: 768px) {
     margin-right: 43px;
   }
@@ -115,7 +119,7 @@
 
   &:hover .header__box-favorite {
     display: block;
-    margin-top: 8px;
+    // margin-top: 8px;
   }
 
   & .header__favorite-icon {

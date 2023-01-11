@@ -1,21 +1,27 @@
 import axios from 'axios';
+import {
+  changeLocalStorage,
+  changeBtnContent,
+} from '../render/favoriteCocktail';
 
-const cocktailList = document.querySelector('#listing-table');
+export const cocktailList = document.querySelector('#listing-table');
 
 const cocktailModal = document.querySelector('.js-cocktail-modal');
 const cocktailName = document.querySelector('.js-cocktail-title');
 const cocktailInstraction = document.querySelector('.js-cocktail-desk');
 const cocktailImg = document.querySelector('.js-cocktail-img');
+const cocktailAddBtn = document.querySelector('.js-cocktail-add-btn');
 export const cocktailIngredientsList = document.querySelector(
   '.js-cocktail-ingredients'
 );
 
 const cocktailModalCloseBtn = document.querySelector('.js-cocktail-close-btn');
+let cocktailId = '';
 
 cocktailList.addEventListener('click', onCocktailInfoOpen);
 cocktailModalCloseBtn.addEventListener('click', onCocktailInfoClose);
 
-async function getCocktailById(id) {
+export async function getCocktailById(id) {
   try {
     const response = await axios.get(
       `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -27,14 +33,20 @@ async function getCocktailById(id) {
 }
 
 async function onCocktailInfoOpen(e) {
-  if (e.target.nodeName !== 'BUTTON') return;
+  if (!e.target.classList.contains('js-btn-more')) return;
+
+  // if (e.target.nodeName !== 'BUTTON') return;
   toggleModalVisible(cocktailModal.parentNode);
   const parentEl = e.target.closest('[data-id]');
-  const cocktailId = parentEl.dataset.id;
+  cocktailId = parentEl.dataset.id;
   const { drinks } = await getCocktailById(cocktailId);
   cocktailName.textContent = drinks[0].strDrink;
   cocktailInstraction.textContent = drinks[0].strInstructions;
   cocktailImg.src = drinks[0].strDrinkThumb;
+  cocktailAddBtn.textContent = changeBtnContent(cocktailId)
+    ? 'Remove from favorite'
+    : 'Add to favorite';
+
   createMarkup(drinks);
   stopScroll();
 }
@@ -91,4 +103,15 @@ function stopScroll() {
 
 function startScroll() {
   document.body.style.overflow = 'visible';
+}
+
+cocktailAddBtn.addEventListener('click', addTofavorite);
+
+function addTofavorite(e) {
+  changeLocalStorage(cocktailId);
+  if (changeBtnContent(cocktailId)) {
+    e.target.textContent = 'Remove from favorite';
+  } else {
+    e.target.textContent = 'Add to to favorite';
+  }
 }
