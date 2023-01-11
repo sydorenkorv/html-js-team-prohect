@@ -1,54 +1,38 @@
 // import './alphabet'
-const apiURL = 'https://thecocktaildb.com/api/json/v1/1';
+import Pagination from 'tui-pagination';
 import { drinksData } from '../api';
 import { changeBtnContent } from './favoriteCocktail';
 import sprite from '../../images/svg/icons-sprite.svg';
 
-// function clearAll() {
-//   while (galleryList.firstChild) {
-//     galleryList.firstChild.remove();
-//   }
-// }
+let test;
 
-const w = window.innerWidth;
-const h = window.innerHeight;
+const container = document.getElementById('tui-pagination-container');
 
-let pageSize = 3;
+// Init pagination
+
+let cardsPerPage = calcCardsPerPage();
 
 let currentPage = 1;
 
-if (w > 768 && w < 1199) {
-  pageSize = 6;
-} else if (w > 1199) {
-  pageSize = 9;
-} else {
-  pageSize = 3;
-}
-
-const paginationNumber = document.getElementById('pagination-numbers');
-
-function clearAll() {
-  while (paginationNumber.firstChild) {
-    paginationNumber.firstChild.remove();
-  }
-}
-
 export async function renderGallery() {
-  let cardDrink = '';
-  drinksData
-    .filter((row, index) => {
-      let start = (currentPage - 1) * pageSize;
-      let end = currentPage * pageSize;
+  let cocktailCardsMarkup = '';
+
+  // temporary variable to check pagination
+  test = [...drinksData, ...drinksData, ...drinksData];
+  console.log('data', test);
+
+  test
+    .filter((cocktail, index) => {
+      let start = (currentPage - 1) * cardsPerPage;
+      let end = currentPage * cardsPerPage;
       // console.log(drinksData);
 
       if (index >= start && index < end) return true;
     })
     .forEach(drink => {
       const isFavorite = changeBtnContent(drink.idDrink);
-      cardDrink += `<li class="cocktails__list-item">
-    <div class="cocktail-card" data-id="${drink.idDrink}" data-name="${
-        drink.strDrink
-      }">
+      cocktailCardsMarkup += `<li class="cocktails__list-item">
+    <div class="cocktail-card" data-id="${drink.idDrink}">
         <div class="cocktail-card__img-wrapper">
             <img class="cocktail-card__img" src="${
               drink.strDrinkThumb
@@ -71,45 +55,37 @@ export async function renderGallery() {
     </div>
 </li>`;
     });
-  document.getElementById('listing-table').innerHTML = cardDrink;
-}
-
-function previousPage() {
-  if (currentPage > 1) currentPage--;
-  renderGallery();
-}
-
-function nextPage() {
-  if (currentPage * pageSize < drinksData.length) currentPage++;
-  renderGallery();
+  document.getElementById('listing-table').innerHTML = cocktailCardsMarkup;
 }
 
 export async function renderButtons() {
-  clearAll();
-  let buttonCount = Math.ceil(drinksData.length / pageSize);
-  console.log(buttonCount);
+  currentPage = 1;
 
-  for (let i = 1; i <= buttonCount; i++) {
-    var button = document.createElement('button');
-    button.classList.add('selector', 'button', 'pagination__button');
-    button.innerHTML = i;
-    paginationNumber.appendChild(button);
-  }
-  const buttnNumbers = document.querySelectorAll('.selector');
+  const options = {
+    totalItems: test.length,
+    itemsPerPage: cardsPerPage,
+    visiblePages: 3,
+    page: 1,
+    centerAlign: false,
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-last-child',
+  };
+  const pagination = new Pagination(container, options);
 
-  for (let i = 0; i < buttnNumbers.length; i++) {
-    buttnNumbers[i].addEventListener('click', function () {
-      currentPage = i + 1;
-      renderGallery();
-    });
-  }
-  console.log(buttnNumbers);
+  pagination.on('afterMove', event => {
+    currentPage = event.page;
+    renderGallery();
+  });
 }
 
-document
-  .querySelector('#prevButton')
-  .addEventListener('click', previousPage, false);
+function calcCardsPerPage() {
+  const width = window.innerWidth;
 
-document
-  .querySelector('#nextButton')
-  .addEventListener('click', nextPage, false);
+  if (width > 768 && width < 1199) {
+    return 6;
+  } else if (width > 1199) {
+    return 9;
+  } else {
+    return 3;
+  }
+}

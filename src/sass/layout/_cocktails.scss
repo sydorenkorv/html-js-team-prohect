@@ -193,35 +193,60 @@
   fill: transparent;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-}
+// .pagination {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 12px;
 
-.pagination__button {
-  margin-top: 24px;
-  width: 32px;
-  height: 32px;
-  background: inherit;
-  border: 1px solid #fe7031;
-  border-radius: 50%;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  color: inherit;
-  &:not(:last-child) {
-    margin-right: 8px;
-  }
-  @media screen and (min-width: $tablet) {
-    margin-top: 32px;
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-    line-height: 20px;
-    &:not(:last-child) {
-      margin-right: 12px;
-    }
-  }
-}
+//   margin-top: 32px;
+//   margin-bottom: 60px;
+// }
+
+// // .pagination__btn-wrapper {
+// //   display: flex;
+// //   justify-content: center;
+// //   align-items: center;
+// //   width: 40px;
+// //   height: 40px;
+// // }
+
+// .pagination__button {
+//   width: 32px;
+//   height: 32px;
+//   background: inherit;
+//   border: 1px solid #fe7031;
+//   border-radius: 50%;
+//   font-family: 'Montserrat';
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 12px;
+//   line-height: 15px;
+//   color: inherit;
+//   &:not(:last-child) {
+//     margin-right: 8px;
+//   }
+//   @media screen and (min-width: $tablet) {
+//     width: 40px;
+//     height: 40px;
+//     font-size: 16px;
+//     line-height: 20px;
+//     &:not(:last-child) {
+//       margin-right: 12px;
+//     }
+//   }
+// }
+
+// .pagination__decor {
+//   font-weight: 700;
+//   line-height: calc(20 / 16);
+//   color: $btnBgColor;
+// }
+// .pagination__button--active {
+//   background-color: $btnBgColor;
+//   color: $extraDecorColor;
+// }
+
+// .tui-page-btn {
+//   border-radius: 50%;
+// }
