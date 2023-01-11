@@ -4,14 +4,14 @@ let darkToggle = document.querySelector('#switch');
 if (sessionStorage.getItem("mode") == "dark") {
   darkmode();
 } else {
-  nodark();
+  lightmode();
 }
  
 darkToggle.addEventListener("change", function() {
   if (darkToggle.checked) {
     darkmode();
   } else {
-    nodark();
+    lightmode();
   }
 });
  
@@ -22,7 +22,7 @@ function darkmode() {
 }
  
 
-function nodark() {
+function lightmode() {
   document.body.classList.remove("dark");
   darkToggle.checked = false;
   sessionStorage.setItem("mode", "light")
