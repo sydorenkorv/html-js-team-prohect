@@ -1,6 +1,6 @@
 .hero__container {
   // display: block;
-  width: 320px;
+  // width: 320px;
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
@@ -8,13 +8,13 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: start;
-    width: 768px;
+    // width: 768px;
     height: 294px;
     margin-bottom: 120px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 1280px;
+    // width: 1280px;
     height: 439px;
   }
 }

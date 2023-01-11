@@ -1,5 +1,6 @@
 import './js/render/alphabet';
 import './js/render/renderGallery';
+import './js/render/favoriteCocktail';
 import './js/modals/burger-menu';
 import './js/modals/modalAboutCocktail';
 import './js/modals/modalAboutIngredient';
