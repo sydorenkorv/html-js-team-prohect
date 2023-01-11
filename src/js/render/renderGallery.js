@@ -46,7 +46,7 @@ export async function renderGallery() {
             <button class="button cocktail-card__btn cocktail-card__btn--transp cocktail-card__btn--centered js-btn-fav">
                 <span class="">${isFavorite ? 'Remove' : 'Add to'}</span>
                 <svg style="${
-                  isFavorite ? 'fill: #FD5103' : 'fill: #fff'
+                  isFavorite ? 'fill: #FD5103' : 'fill: inherit'
                 }" class="cocktail-card__heart-icon" width="21" height="19">
                     <use href="${sprite}#heart"></use>
                 </svg>
