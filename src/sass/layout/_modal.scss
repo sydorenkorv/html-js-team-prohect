@@ -1,6 +1,6 @@
 .modal {
   position: absolute;
-  top: 0;
+  top: 20%;
   // bottom: 0;
   // left: 0;
   // right: 0;
@@ -99,6 +99,7 @@
 
 .cocktail__desc {
   line-height: calc(28 / 16);
+  color: #bdbdbd;
 }
 
 .cocktail__img-wrapper {
@@ -139,7 +140,7 @@
 
   font-weight: 600;
   line-height: calc(24 / 16);
-  color: #000917;
+  color: inherit;
   text-transform: uppercase;
 
   @media screen and (min-width: $desktop) {
@@ -149,11 +150,10 @@
 
 .cocktail__info-amount {
   margin-bottom: 8px;
-
+  color: #bdbdbd;
   font-weight: 300;
   font-size: 14px;
   line-height: calc(21 / 14);
-  color: inherit;
 }
 
 .cocktail__title-tablet {
