@@ -109,9 +109,16 @@ cocktailAddBtn.addEventListener('click', addTofavorite);
 
 function addTofavorite(e) {
   changeLocalStorage(cocktailId);
+  const cardRef = document.querySelector(`[data-id="${cocktailId}"]`);
+  const favBtnRef = cardRef.querySelector('.js-btn-fav');
+
   if (changeBtnContent(cocktailId)) {
     e.target.textContent = 'Remove from favorite';
+    favBtnRef.firstElementChild.textContent = 'Remove';
+    favBtnRef.lastElementChild.style.fill = '#FD5103';
   } else {
-    e.target.textContent = 'Add to to favorite';
+    e.target.textContent = 'Add to favorite';
+    favBtnRef.firstElementChild.textContent = 'Add to';
+    favBtnRef.lastElementChild.style.fill = '#fff';
   }
 }

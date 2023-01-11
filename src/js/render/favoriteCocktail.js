@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-import { cocktailList } from '../modals/modalAboutCocktail';
+import { cocktailList, getCocktailById } from '../modals/modalAboutCocktail';
 import { getCocktailById } from '../modals/modalAboutCocktail';
+import { renderGallery, renderButtons } from './renderGallery';
 
 function addToLocalStorage(key, value) {
   try {
@@ -80,10 +81,25 @@ export function changeLocalStorage(cocktailId) {
 }
 
 export function changeBtnContent(cardId) {
-  // console.log(getFromLocalStorage(STORAGE_KEY));
   return getFromLocalStorage(STORAGE_KEY).includes(cardId);
 }
-// console.log(arr);
+
+export async function getCocktailCards() {
+  const cocktailIds = getFromLocalStorage(STORAGE_KEY);
+  const cocktailCardsInfo = [];
+
+  for (const id of cocktailIds) {
+    const { drinks } = await getCocktailById(id);
+    cocktailCardsInfo.push(drinks[0]);
+  }
+
+  // cocktailIds.forEach(async id => {
+  //   const { drinks } = await getCocktailById(id);
+  //   cocktailCardsInfo.push(drinks[0]);
+  // });
+  console.log(cocktailCardsInfo);
+  return cocktailCardsInfo;
+}
 
 //-----------------------------------------------
 //------------------------------------------------

@@ -1,6 +1,6 @@
 // import './alphabet'
 import Pagination from 'tui-pagination';
-import { drinksData } from '../api';
+// import { drinksData } from '../api';
 import { changeBtnContent } from './favoriteCocktail';
 import sprite from '../../images/svg/icons-sprite.svg';
 
@@ -14,14 +14,14 @@ let cardsPerPage = calcCardsPerPage();
 
 let currentPage = 1;
 
-export async function renderGallery() {
+export async function renderGallery(drinksData) {
   let cocktailCardsMarkup = '';
 
   // temporary variable to check pagination
-  test = [...drinksData, ...drinksData, ...drinksData];
-  console.log('data', test);
+  // test = [...drinksData, ...drinksData, ...drinksData];
+  // console.log('data', test);
 
-  test
+  drinksData
     .filter((cocktail, index) => {
       let start = (currentPage - 1) * cardsPerPage;
       let end = currentPage * cardsPerPage;
@@ -38,31 +38,31 @@ export async function renderGallery() {
               drink.strDrinkThumb
             }" alt="cocktail" class="cocktails__img" />
         </div>
-        <p class="cocktail-card__name">${drink.strDrink}</p>
-        <div class="cocktail-card__btns-block">
-            <button class="button cocktail-card__btn cocktail-card__btn--accent js-btn-more">
-                Learn more
-            </button>
-            <button class="button cocktail-card__btn cocktail-card__btn--transp cocktail-card__btn--centered js-btn-fav">
-                <span class="">${isFavorite ? 'Remove' : 'Add to'}</span>
-                <svg style="${
-                  isFavorite ? 'fill: #FD5103' : 'fill: #fff'
-                }" class="cocktail-card__heart-icon" width="21" height="19">
-                    <use href="${sprite}#heart"></use>
-                </svg>
-            </button>
-        </div>
-    </div>
+            <p class="cocktail-card__name">${drink.strDrink}</p>
+            <div class="cocktail-card__btns-block">
+                <button class="button cocktail-card__btn cocktail-card__btn--accent js-btn-more">
+                    Learn more
+                </button>
+                <button class="button cocktail-card__btn cocktail-card__btn--transp cocktail-card__btn--centered js-btn-fav">
+                    <span class="">${isFavorite ? 'Remove' : 'Add to'}</span>
+                    <svg style="${
+                      isFavorite ? 'fill: #FD5103' : 'fill: #fff'
+                    }" class="cocktail-card__heart-icon" width="21" height="19">
+                        <use href="${sprite}#heart"></use>
+                    </svg>
+                </button>
+            </div>
+          </div>
 </li>`;
     });
   document.getElementById('listing-table').innerHTML = cocktailCardsMarkup;
 }
 
-export async function renderButtons() {
+export async function renderButtons(drinksData) {
   currentPage = 1;
 
   const options = {
-    totalItems: test.length,
+    totalItems: drinksData.length,
     itemsPerPage: cardsPerPage,
     visiblePages: 3,
     page: 1,
@@ -74,7 +74,7 @@ export async function renderButtons() {
 
   pagination.on('afterMove', event => {
     currentPage = event.page;
-    renderGallery();
+    renderGallery(drinksData);
   });
 }
 
