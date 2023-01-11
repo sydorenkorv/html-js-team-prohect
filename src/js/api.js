@@ -20,7 +20,7 @@ console.log(drinksData);
 
 const selectDdText = document.querySelector('.hero__select-list');
 selectDdText.onclick = async function (event) {
-  var target = event.target;
+  
   letter = event.target.innerHTML.toLowerCase();
   await getData(letter);
   await renderGallery();
