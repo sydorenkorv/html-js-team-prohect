@@ -6,7 +6,7 @@ import './js/modals/modalAboutCocktail';
 import './js/modals/modalAboutIngredient';
 import './js/modeToggle';
 import './js/api';
-
+import './js/getCocktails/search';
 // // hero
 
 // //alphabet
