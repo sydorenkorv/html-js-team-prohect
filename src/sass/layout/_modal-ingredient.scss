@@ -1,7 +1,7 @@
 .modal-ingredient {
   position: absolute;
-  top: 0;
-  // top: 50%;
+
+  top: 25%;
   left: 50%;
   transform: translateX(-50%);
   // transform: translateY(-50%);
@@ -13,8 +13,8 @@
   width: 100%;
 
   font-size: 16px;
-  color: $textClGrayForLight;
-  background-color: inherit;
+
+  background-color: #fcfcfc;
 
   @media screen and (min-width: $mobile) {
     width: 320px;
@@ -65,7 +65,7 @@
   font-weight: 900;
   font-size: 32px;
   line-height: calc(38 / 32);
-  color: $textColorDark;
+  color: inherit;
 
   @media screen and (min-width: $tablet) {
     margin-bottom: 28px;
@@ -75,13 +75,14 @@
 .ingredient__type {
   font-weight: 600;
   line-height: calc(26 / 16);
-  color: $textColorDark;
+  color: inherit;
   text-transform: uppercase;
 }
 
 .ingredient__desc {
   line-height: calc(28 / 16);
   margin-bottom: 28px;
+  color: $textClGrayForLight;
 }
 
 .ingredient__desc-accent {

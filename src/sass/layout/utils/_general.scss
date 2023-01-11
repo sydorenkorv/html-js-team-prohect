@@ -63,6 +63,7 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
+  backdrop-filter: blur(10px);
 }
 
 .is-hidden {

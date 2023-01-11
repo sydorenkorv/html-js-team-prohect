@@ -20,7 +20,6 @@ window.onload = getRandom();
 
 const selectDdText = document.querySelector('.hero__select-list');
 selectDdText.onclick = async function (event) {
-  var target = event.target;
   letter = event.target.innerHTML.toLowerCase();
   const dataCocktail = await getData(letter);
   await renderGallery(dataCocktail);
@@ -49,19 +48,19 @@ async function getData(letter) {
   return cocktail.drinks;
 }
 
-const searchForm = document.querySelector('.header__form');
-const input = document.querySelector('.header__search');
-const submitButton = document.querySelector('.searchButton');
+// const searchForm = document.querySelector('.header__form');
+// const input = document.querySelector('.header__search');
+// const submitButton = document.querySelector('.searchButton');
 
-submitButton.addEventListener('click', async function (e) {
-  e.preventDefault();
-  const name = input.value;
-  console.log(input.value);
-  await getByName(name);
-  await renderGallery();
-});
+// submitButton.addEventListener('click', async function (e) {
+//   e.preventDefault();
+//   const name = input.value;
+//   console.log(input.value);
+//   await getByName(name);
+//   await renderGallery();
+// });
 
-async function getByName(name) {
+export async function getByName(name) {
   const response = await fetch(
     `https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=${name}`
   );
