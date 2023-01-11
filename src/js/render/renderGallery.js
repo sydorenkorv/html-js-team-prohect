@@ -15,10 +15,11 @@ let cardsPerPage = calcCardsPerPage();
 let currentPage = 1;
 
 export async function renderGallery() {
+
   let cocktailCardsMarkup = '';
 
   // temporary variable to check pagination
-  test = [...drinksData, ...drinksData, ...drinksData];
+  test = [...drinksData];
   console.log('data', test);
 
   test
