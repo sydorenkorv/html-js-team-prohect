@@ -12,6 +12,7 @@ async function getRandom() {
   await renderGallery(cocktail.drinks);
 }
 window.onload = getRandom();
+// getRandom();
 
 // export let drinksData = [];
 // console.log(drinksData);
@@ -63,6 +64,15 @@ async function getData(letter) {
 export async function getByName(name) {
   const response = await fetch(
     `https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=${name}`
+  );
+  const cocktail = await response.json();
+  drinksData = cocktail.drinks;
+}
+
+export async function getById(id) {
+  const response = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=
+${id}`
   );
   const cocktail = await response.json();
   drinksData = cocktail.drinks;
