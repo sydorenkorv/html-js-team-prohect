@@ -1,11 +1,32 @@
 import { STORAGE_KEY } from '../render/favoriteCocktail';
 import { getById } from '../api';
 console.log(STORAGE_KEY);
-console.log(localStorage);
+import { renderGallery } from '../render/renderGallery';
 
 async function searchById(e) {
   e.preventDefault();
 }
+let storage = localStorage;
+console.log(localStorage);
+
+const idData = storage.getItem('idData');
+console.log('idData', idData);
+
+const parsedSettings = JSON.parse(idData);
+console.log(parsedSettings);
+for (const idCocteil of parsedSettings) {
+  console.log(Number(idCocteil));
+  const id = Number(idCocteil);
+  getById(idCocteil);
+  renderGallery();
+}
+
+// // Перебирающий forEach
+// theme.forEach(function (number) {
+//   console.log(number);
+// });
+
+// storage.find(option => option.idData === '16958'); // { label: 'blue', color: '#2196F3' }
 
 // export async function renderGalleryFovFav() {
 //   let cocktailCardsMarkup = '';

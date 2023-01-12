@@ -40,7 +40,7 @@ submitButton.addEventListener('click', async function (e) {
   }
 
   searchForm.reset();
-  console.log(input.value);
+  // console.log(input.value);
 });
 
 function alertNoEmptySearch() {
