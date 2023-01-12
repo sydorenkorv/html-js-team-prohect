@@ -40,11 +40,11 @@ async function onCocktailInfoOpen(e) {
   const parentEl = e.target.closest('[data-id]');
   cocktailId = parentEl.dataset.id;
   const { drinks } = await getCocktailById(cocktailId);
-  // cocktailModal.setAttribute('data-id', drinks[0].idDrink);
+  cocktailModal.setAttribute('data-id', drinks[0].idDrink);
   cocktailName.textContent = drinks[0].strDrink;
   cocktailInstraction.textContent = drinks[0].strInstructions;
   cocktailImg.src = drinks[0].strDrinkThumb;
-  cocktailAddBtn.textContent = changeBtnContent(cocktailId)
+  cocktailAddBtn.textContent = changeBtnContent(drinks[0].idDrink)
     ? 'Remove from favorite'
     : 'Add to favorite';
 
@@ -108,20 +108,29 @@ function startScroll() {
 
 cocktailAddBtn.addEventListener('click', addTofavorite);
 
+let cardRef;
+let favBtnRef;
+let elemExists = true;
+
 function addTofavorite(e) {
   changeLocalStorage(cocktailId);
-  const cardRef = document.querySelector(`[data-id="${cocktailId}"]`);
-  const favBtnRef = cardRef.querySelector('.js-btn-fav');
+  if (elemExists) {
+    cardRef = document.querySelector(`[data-id="${cocktailId}"]`);
+    favBtnRef = cardRef.querySelector('.js-btn-fav');
+  }
 
   if (changeBtnContent(cocktailId)) {
+    cocktailList.insertAdjacentElement('beforeend', cardRef.parentElement);
     e.target.textContent = 'Remove from favorite';
     favBtnRef.firstElementChild.textContent = 'Remove';
     favBtnRef.lastElementChild.style.fill = '#FD5103';
+    elemExists = true;
   } else {
     e.target.textContent = 'Add to favorite';
     favBtnRef.firstElementChild.textContent = 'Add to';
     favBtnRef.lastElementChild.style.fill = '#fff';
     removeCard(cardRef.parentElement);
+    elemExists = false;
   }
 }
 

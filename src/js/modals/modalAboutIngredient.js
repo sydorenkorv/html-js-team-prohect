@@ -13,11 +13,16 @@ const ingredientName = document.querySelector('.js-ingredient-title');
 const ingredientType = document.querySelector('.js-ingredient-type');
 const ingredientDesc = document.querySelector('.js-ingredient-desk');
 const ingredientInfo = document.querySelector('.js-ingredient-info');
+const ingredientAddBtn = document.querySelector('.js-ingredient-add-btn');
+const ingredientCardList = document.querySelector('.favorite__list-ingredient');
+
+const INGREDIENT_KEY = 'ingredientsId';
 
 cocktailIngredientsList.addEventListener('click', onIngredientlInfoOpen);
 ingredientModalCloseBtn.addEventListener('click', onIngredientlInfoClose);
+ingredientAddBtn.addEventListener('click', onIngredientAddToFavorite);
 
-async function getIngredientByName(name) {
+export async function getIngredientByName(name) {
   try {
     const response = await axios.get(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`
@@ -33,9 +38,16 @@ async function onIngredientlInfoOpen(e) {
   toggleModalVisible(ingredientModal.parentNode);
   const targetIngredient = e.target.dataset.name.toLowerCase();
   const { ingredients } = await getIngredientByName(targetIngredient);
+  ingredientModal.setAttribute('data-id', ingredients[0].idIngredient);
   ingredientName.textContent = ingredients[0].strIngredient;
   ingredientType.textContent = ingredients[0].strType;
   ingredientDesc.textContent = ingredients[0].strDescription;
+
+  console.log(changeBtnContent(ingredientId));
+  ingredientAddBtn.textContent = changeBtnContent(ingredients[0].idIngredient)
+    ? 'Remove from favorite'
+    : 'Add to favorite';
+
   createMarkup(ingredients);
 }
 
@@ -66,3 +78,100 @@ function closeModalByButton(e) {
     toggleModalVisible(ingredientModal.parentNode);
   }
 }
+
+let ingredientId = '';
+
+function onIngredientAddToFavorite(e) {
+  const parentEl = e.target.closest('[data-id]');
+  ingredientId = parentEl.dataset.id;
+  changeLocalStorage(ingredientId);
+  console.log(changeBtnContent(ingredientId));
+
+  ingredientAddBtn.textContent = changeBtnContent(ingredientId)
+    ? 'Remove from favorite'
+    : 'Add to favorite';
+}
+
+function changeBtnContent(cardId) {
+  return getFromLocalStorage(INGREDIENT_KEY).includes(cardId);
+}
+
+function changeLocalStorage(Id) {
+  let cardsId = [];
+
+  if (!getFromLocalStorage(INGREDIENT_KEY)) {
+    cardsId.push(ingredientId);
+    addToLocalStorage(INGREDIENT_KEY, cardsId);
+  } else {
+    cardsId = getFromLocalStorage(INGREDIENT_KEY);
+    const index = cardsId.indexOf(ingredientId);
+    if (index !== -1) {
+      cardsId.splice(index, 1);
+      addToLocalStorage(INGREDIENT_KEY, cardsId);
+    } else {
+      cardsId.push(ingredientId);
+      // console.log(cardsId);
+
+      addToLocalStorage(INGREDIENT_KEY, cardsId);
+    }
+  }
+}
+
+export async function getIngredientById(id) {
+  try {
+    const response = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function addToLocalStorage(key, value) {
+  try {
+    const serializedState = JSON.stringify(value);
+    localStorage.setItem(key, serializedState);
+  } catch (error) {
+    console.error('Set state error: ', error.message);
+  }
+}
+
+export function getFromLocalStorage(key) {
+  try {
+    const serializedState = localStorage.getItem(key);
+
+    return serializedState === null ? [] : JSON.parse(serializedState);
+  } catch (error) {
+    console.error('Get state error: ', error.message);
+  }
+}
+
+// async function createCardIngredient(id) {
+//   const { ingredients } = await getIngredientById(id);
+//   const markup = `<li class="favorite__item">
+//         <div class="ingredient-card" data-id="${ingredients[0].idIngredient}">
+//           <h2 class="ingredient-card__title">${ingredients[0].strIngredient}</h2>
+//           <p class="ingredient-card__text">${ingredients[0].strType}</p>
+//           <div class="buttons-wrap">
+//             <button
+//               class="button cocktail-card__btn cocktail-card__btn--accent"
+//               type="button"
+//             >
+//               Learn more
+//             </button>
+//             <button
+//               class="button cocktail-card__btn cocktail-card__btn--transp cocktail-card__btn--centered"
+//               type="button"
+//             >
+//               <span class="">Add to</span>
+//               <svg class="cocktail-card__heart-icon" width="21" height="19">
+//                 <use href="./images/svg/icons-sprite.svg#heart"></use>
+//               </svg>
+//             </button>
+//           </div>
+//         </div>
+//       </li>`;
+
+//   ingredientCardList.insertAdjacentHTML('beforeend', markup);
+// }

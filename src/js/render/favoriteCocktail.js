@@ -32,19 +32,26 @@ cocktailList.addEventListener('click', toggleToFavoriteCocktail);
 export const STORAGE_KEY = 'cocktailsId';
 
 function toggleToFavoriteCocktail(e) {
-  if (!e.target.classList.contains('js-btn-fav')) return;
+  const carrentElement = e.target.closest('.js-btn-fav');
+  if (
+    !carrentElement
+    // &&
+    // !e.target.classList.contains('btn-text')
+  )
+    return;
   // console.log(e.target);
 
   const parentEl = e.target.closest('[data-id]');
   const cocktailId = parentEl.dataset.id;
   changeLocalStorage(cocktailId);
+  let textBtn = 'Add to';
+  let colorStyleBtn = '#fff';
   if (changeBtnContent(cocktailId)) {
-    e.target.firstElementChild.textContent = 'Remove';
-    e.target.lastElementChild.style.fill = '#FD5103';
-  } else {
-    e.target.firstElementChild.textContent = 'Add to';
-    e.target.lastElementChild.style.fill = '#fff';
+    textBtn = 'Remove';
+    colorStyleBtn = '#FD5103';
   }
+  carrentElement.firstElementChild.textContent = textBtn;
+  carrentElement.lastElementChild.style.fill = colorStyleBtn;
 }
 
 export function changeLocalStorage(cocktailId) {
@@ -61,7 +68,7 @@ export function changeLocalStorage(cocktailId) {
       addToLocalStorage(STORAGE_KEY, cardsId);
     } else {
       cardsId.push(cocktailId);
-      console.log(cardsId);
+      // console.log(cardsId);
       addToLocalStorage(STORAGE_KEY, cardsId);
     }
   }

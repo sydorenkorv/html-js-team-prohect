@@ -1,10 +1,11 @@
 .modal-ingredient {
   position: absolute;
 
-  top: 25%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  // transform: translateX(-50%);
   // transform: translateY(-50%);
+  transform: translate(-50%, -50%);
 
   // display: none;
 
