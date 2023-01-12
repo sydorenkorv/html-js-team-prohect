@@ -1,13 +1,13 @@
 import './js/render/alphabet';
 import './js/render/renderGallery';
-import './js/render/favoriteCocktail';
+// import './js/render/favoriteCocktail';
 import './js/modals/burger-menu';
 import './js/modals/modalAboutCocktail';
 import './js/modals/modalAboutIngredient';
 import './js/modeToggle';
 import './js/api';
 import './js/getCocktails/search';
-import './js/getCocktails/searchInFavCoc'
+// import './js/getCocktails/searchInFavCoc';
 // // hero
 
 // //alphabet

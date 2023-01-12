@@ -38,7 +38,9 @@ export async function renderGallery() {
               drink.strDrinkThumb
             }" alt="cocktail" class="cocktails__img" />
         </div>
-        <p class="cocktail-card__name">${drink.strDrink}</p>
+        <div class="cocktail-card__box">
+                <p class="cocktail-card__name">${drink.strDrink}</p>
+</div>
         <div class="cocktail-card__btns-block">
             <button class="button cocktail-card__btn cocktail-card__btn--accent js-btn-more">
                 Learn more

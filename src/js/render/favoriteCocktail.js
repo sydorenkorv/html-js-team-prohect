@@ -34,7 +34,7 @@ function removeFromLocalStorage(key) {
 
 cocktailList.addEventListener('click', toggleToFavoriteCocktail);
 
-const STORAGE_KEY = 'idData';
+export const STORAGE_KEY = 'idData';
 
 // addToLocalStorage(STORAGE_KEY, arr);
 // addToLocalStorage(STORAGE_KEY, Json.stringify(arr));
