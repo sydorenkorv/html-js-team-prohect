@@ -17,7 +17,7 @@ console.log(parsedSettings);
 for (const idCocteil of parsedSettings) {
   console.log(Number(idCocteil));
   const id = Number(idCocteil);
-  getById(idCocteil);
+  getById(id);
   renderGallery();
 }
 
