@@ -73,13 +73,13 @@
 .cocktail-card__img-wrapper {
   width: 280px;
   height: 280px;
-  margin-bottom: 48px;
+  // margin-bottom: 48px;
 
   @media screen and (min-width: $tablet) {
     width: 335px;
     height: 395px;
 
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -93,8 +93,24 @@
   height: 100%;
 }
 
+.cocktail-card__box {
+display: flex;
+justify-content: center;
+align-items: center;
+  @media screen and (max-width: 767px) {
+    padding-top: 48px;
+    margin-bottom: 16px;
+      height: 105px;
+
+  }
+        @media screen and (min-width: $tablet) {
+  height: 80px;
+        }
+}
+
+
 .cocktail-card__name {
-  margin-bottom: 16px;
+  // margin-bottom: 16px;
 
   font-family: 'Roboto';
   font-weight: 900;
@@ -104,7 +120,7 @@
   color: inherit;
 
   @media screen and (min-width: $tablet) {
-    margin-bottom: 25px;
+    // margin-bottom: 25px;
     font-size: 28px;
     line-height: 1.18;
   }

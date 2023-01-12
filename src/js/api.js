@@ -12,6 +12,7 @@ async function getRandom() {
   await renderGallery();
 }
 window.onload = getRandom();
+// getRandom();
 
 export let drinksData = [];
 console.log(drinksData);
@@ -20,7 +21,6 @@ console.log(drinksData);
 
 const selectDdText = document.querySelector('.hero__select-list');
 selectDdText.onclick = async function (event) {
-  
   letter = event.target.innerHTML.toLowerCase();
   await getData(letter);
   await renderGallery();
@@ -68,3 +68,11 @@ export async function getByName(name) {
   drinksData = cocktail.drinks;
 }
 
+export async function getById(id) {
+  const response = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=
+${id}`
+  );
+  const cocktail = await response.json();
+  drinksData = cocktail.drinks;
+}

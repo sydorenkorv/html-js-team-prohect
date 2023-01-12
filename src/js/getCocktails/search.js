@@ -15,18 +15,18 @@ submitButton.addEventListener('click', async function (e) {
     return;
   }
 
-    // getByName(name)
-    //   .then(({ test }) => {
-    //     if (data.strDrinks === 0) {
-    //       alertNoImagesFound();
-    //     } else {
-    //       renderGallery();
-    //     }
-    //   })
-    //   .catch(error => console.log(error))
-    //   .finally(() => {
-    //     searchForm.reset();
-    //   });
+  // getByName(name)
+  //   .then(({ test }) => {
+  //     if (data.strDrinks === 0) {
+  //       alertNoImagesFound();
+  //     } else {
+  //       renderGallery();
+  //     }
+  //   })
+  //   .catch(error => console.log(error))
+  //   .finally(() => {
+  //     searchForm.reset();
+  //   });
   // else if (!name) {
   //   alertNoImagesFound();
   // }
@@ -34,13 +34,13 @@ submitButton.addEventListener('click', async function (e) {
     await getByName(name);
     if (drinksData === null) {
       alertNoImagesFound();
+    } else {
+      await renderGallery();
     }
-    else{
-    await renderGallery();}
   }
 
   searchForm.reset();
-  console.log(input.value);
+  // console.log(input.value);
 });
 
 function alertNoEmptySearch() {
@@ -51,6 +51,6 @@ function alertNoEmptySearch() {
 
 function alertNoImagesFound() {
   Notiflix.Notify.failure(
-    'Sorry, there are no images matching your search query. Please try again.'
+    'sorry for incorrect cocktail name input. please try again.'
   );
 }
