@@ -1,0 +1,27 @@
+{{#each this}}
+  <li class='favorite__item' data-id='{{idIngredient}}'>
+    <div class='ingredient-card'>
+      <h2 class='ingredient-card__title'>{{strIngredient}}</h2>
+      <p class='ingredient-card__text'>{{strType}}</p>
+      <div class='buttons-wrap'>
+        <button
+          class='button cocktail-card__btn cocktail-card__btn--accent'
+          type='button'
+          data-action='more'
+        >
+          Learn more
+        </button>
+        <button
+          class='button cocktail-card__btn cocktail-card__btn--transp cocktail-card__btn--centered'
+          type='button'
+          data-action='remove'
+        >
+          <span class=''>Remove</span>
+          <svg class='cocktail-card__heart-icon' width='21' height='19'>
+            <use href='/icons-sprite.bb13ed54.svg#heart'></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </li>
+{{/each}}

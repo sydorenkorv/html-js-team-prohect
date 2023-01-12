@@ -31,7 +31,7 @@ cocktailList.addEventListener('click', toggleToFavoriteCocktail);
 
 export const STORAGE_KEY = 'cocktailsId';
 
-function toggleToFavoriteCocktail(e) {
+export function toggleToFavoriteCocktail(e) {
   const carrentElement = e.target.closest('.js-btn-fav');
   if (
     !carrentElement

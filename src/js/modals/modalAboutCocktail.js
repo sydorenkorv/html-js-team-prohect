@@ -130,6 +130,7 @@ function addTofavorite(e) {
     favBtnRef.firstElementChild.textContent = 'Add to';
     favBtnRef.lastElementChild.style.fill = '#fff';
     removeCard(cardRef.parentElement);
+    console.log(cardRef.parentElement);
     elemExists = false;
   }
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { cocktailIngredientsList } from './modalAboutCocktail';
+// import { cocktailIngredientsList } from './modalAboutCocktail';
 
 function toggleModalVisible(elem) {
   elem.classList.toggle('is-hidden');
@@ -9,6 +9,10 @@ export const ingredientModal = document.querySelector('.js-ingredient-modal');
 const ingredientModalCloseBtn = document.querySelector(
   '.js-ingredient-close-btn'
 );
+const cocktailIngredientsList = document.querySelector(
+  '.js-cocktail-ingredients'
+);
+
 const ingredientName = document.querySelector('.js-ingredient-title');
 const ingredientType = document.querySelector('.js-ingredient-type');
 const ingredientDesc = document.querySelector('.js-ingredient-desk');
@@ -38,6 +42,25 @@ async function onIngredientlInfoOpen(e) {
   toggleModalVisible(ingredientModal.parentNode);
   const targetIngredient = e.target.dataset.name.toLowerCase();
   const { ingredients } = await getIngredientByName(targetIngredient);
+  createMarkup(ingredients);
+}
+
+export async function onIngredientlInfoOpenInFavorite(e) {
+  const cardElement = e.target.closest('[data-id]');
+
+  if (!cardElement) return;
+  toggleModalVisible(ingredientModal.parentNode);
+  const targetIngredientId = cardElement.dataset.id;
+  const { ingredients } = await getIngredientById(targetIngredientId);
+  console.log(ingredients);
+  createMarkup(ingredients);
+}
+
+function onIngredientlInfoClose() {
+  toggleModalVisible(ingredientModal.parentNode);
+}
+
+function createMarkup(ingredients = []) {
   ingredientModal.setAttribute('data-id', ingredients[0].idIngredient);
   ingredientName.textContent = ingredients[0].strIngredient;
   ingredientType.textContent = ingredients[0].strType;
@@ -48,14 +71,6 @@ async function onIngredientlInfoOpen(e) {
     ? 'Remove from favorite'
     : 'Add to favorite';
 
-  createMarkup(ingredients);
-}
-
-function onIngredientlInfoClose() {
-  toggleModalVisible(ingredientModal.parentNode);
-}
-
-function createMarkup(ingredients = []) {
   const markup = `<li>Type: ${ingredients[0].strType}</li>`;
   ingredientInfo.innerHTML = markup;
 }
@@ -92,6 +107,14 @@ function onIngredientAddToFavorite(e) {
     : 'Add to favorite';
 }
 
+export function onIngredientRemoveFromFavoriteCard(e) {
+  const parentEl = e.target.closest('[data-id]');
+  if (!parentEl) return;
+  ingredientId = parentEl.dataset.id;
+  changeLocalStorage(ingredientId);
+  console.log(changeBtnContent(ingredientId));
+}
+
 function changeBtnContent(cardId) {
   return getFromLocalStorage(INGREDIENT_KEY).includes(cardId);
 }
@@ -117,7 +140,7 @@ function changeLocalStorage(Id) {
   }
 }
 
-export async function getIngredientById(id) {
+async function getIngredientById(id) {
   try {
     const response = await axios.get(
       `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${id}`
