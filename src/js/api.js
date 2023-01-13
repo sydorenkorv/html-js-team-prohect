@@ -1,5 +1,6 @@
 import { renderGallery } from './render/renderGallery';
 import { renderButtons } from './render/renderGallery';
+const repoURL = `http://localhost:1234/index.html`
 
 // const apiURL = 'https://thecocktaildb.com/api/json/v1/1';
 
@@ -13,21 +14,21 @@ async function getRandom() {
 }
 
 
-if(window.location.href == 'http://localhost:1234/index.html'){getRandom()}
+if(window.location.href == `${repoURL}`){getRandom()}
 // getRandom();
 
 // export let drinksData = [];
 // console.log(drinksData);
 
 // render by letter mobile
-
+if(window.location.href == `${repoURL}`){
 const selectDdText = document.querySelector('.hero__select-list');
 selectDdText.onclick = async function (event) {
   letter = event.target.innerHTML.toLowerCase();
   const dataCocktail = await getData(letter);
   await renderGallery(dataCocktail);
   await renderButtons(dataCocktail);
-};
+};}
 
 ///////////render by letter WS
 
