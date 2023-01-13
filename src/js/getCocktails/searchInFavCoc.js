@@ -32,9 +32,10 @@ for (const id of cocktailIds) {
     console.log(xxxx.length)
 for (let i = 0; i < xxxx.length; i++) {
         let drink = xxxx[i];
-        if (drink.strDrink.includes(name))
-        await getById(drink.idDrink)
-
+        if (drink.strDrink.includes(name)){
+            const data = await getById(drink.idDrink);
+            renderGallery(data)
+}
 
     }
 
