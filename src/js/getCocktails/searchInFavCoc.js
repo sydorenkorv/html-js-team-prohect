@@ -40,7 +40,7 @@ const promises = []
           console.log(name)
             let drink = xxxx[i];
     if (drink.strDrink.toLowerCase().trim().includes(name)){ 
-            id = drink.idDrink
+            const id = drink.idDrink
             promises.push(await getById(id));
         console.log(promises)
     
