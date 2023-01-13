@@ -57,26 +57,35 @@
   @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
-    gap: 32px;
+    gap: 31px;
+  }
+}
+
+.favorite__item {
+  @media screen and (max-width: 768px) {
+    margin-bottom: 20px;
   }
 }
 
 .ingredient-card {
   width: 280px;
-  // height: 205px;
+  height: 177px;
   border: 1px solid #fd5103;
   border-radius: 4px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media screen and (min-width: 768px) {
     width: 336px;
-    // height: 177px;
+    height: 205px;
     padding: 20px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 395px;
-    // height: 221px;
+    height: 221px;
     padding: 30px 28px 26px;
   }
 }
