@@ -3,6 +3,9 @@ import { getById } from '../api';
 console.log(STORAGE_KEY);
 import { renderGallery } from '../render/renderGallery';
 
+
+
+
 async function searchById(e) {
   e.preventDefault();
 }
