@@ -17,7 +17,7 @@ async function getRandom() {
 if(window.location.href == `${repoURL}`){getRandom()}
 // getRandom();
 
-// export let drinksData = [];
+export let drinksData = [];
 // console.log(drinksData);
 
 // render by letter mobile
@@ -40,6 +40,7 @@ for (var i = 0; i < searchAlphabet.length; i++) {
     const dataCocktail = await getData(letter);
     await renderGallery(dataCocktail);
     await renderButtons(dataCocktail);
+
   });
 }
 
@@ -66,10 +67,10 @@ async function getData(letter) {
 
 export async function getByName(name) {
   const response = await fetch(
-    `https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=${name}`
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
   );
   const cocktail = await response.json();
-  drinksData = cocktail.drinks;
+return cocktail.drinks
 }
 
 export async function getById(id) {
@@ -82,4 +83,6 @@ ${id}`
   return cocktail.drinks
 }
 
-console.log(getById('15092'))
+
+
+

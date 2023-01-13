@@ -5,8 +5,9 @@ import './js/modals/burger-menu';
 import './js/modals/modalAboutCocktail';
 import './js/modals/modalAboutIngredient';
 import './js/modeToggle';
-import './js/api';
 import './js/getCocktails/search';
+import './js/api';
+
 // import './js/getCocktails/searchInFavCoc';
 // // hero
 

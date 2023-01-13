@@ -1,10 +1,10 @@
 // import './alphabet'
 import Pagination from 'tui-pagination';
-// import { drinksData } from '../api';
+import { drinksData } from '../api';
 import { changeBtnContent } from './favoriteCocktail';
 import sprite from '../../images/svg/icons-sprite.svg';
 
-let test;
+
 
 const container = document.getElementById('tui-pagination-container');
 
@@ -16,13 +16,13 @@ let currentPage = 1;
 
 export async function renderGallery(drinksData) {
   let cocktailCardsMarkup = '';
+  console.log(drinksData)
 
   // temporary variable to check pagination
   // test = [...drinksData, ...drinksData, ...drinksData];
   // console.log('data', test);
 
-  drinksData
-    .filter((cocktail, index) => {
+  drinksData.filter((cocktail, index) => {
       let start = (currentPage - 1) * cardsPerPage;
       let end = currentPage * cardsPerPage;
       // console.log(drinksData);
@@ -82,7 +82,7 @@ export function renderButtons(drinksData) {
   });
 }
 
-function calcCardsPerPage() {
+export function calcCardsPerPage() {
   const width = window.innerWidth;
 
   if (width > 768 && width < 1199) {

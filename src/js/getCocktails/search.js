@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 
-
-import { getByName, drinksData } from '../api';
+import { renderButtons } from '../render/renderGallery';
+import { getByName} from '../api';
 import { renderGallery } from '../render/renderGallery';
 const searchForm = document.querySelector('.header__form');
 const input = document.querySelector('.header__search');
@@ -10,34 +10,19 @@ const submitButton = document.querySelector('.searchButton');
 submitButton.addEventListener('click', async function (e) {
   e.preventDefault();
   const name = input.value.trim();
+  const dataCocktail = await getByName(name);
 
   if (name === '') {
     alertNoEmptySearch();
     return;
   }
 
-  // getByName(name)
-  //   .then(({ test }) => {
-  //     if (data.strDrinks === 0) {
-  //       alertNoImagesFound();
-  //     } else {
-  //       renderGallery();
-  //     }
-  //   })
-  //   .catch(error => console.log(error))
-  //   .finally(() => {
-  //     searchForm.reset();
-  //   });
-  // else if (!name) {
-  //   alertNoImagesFound();
-  // }
   else {
-    await getByName(name);
-    if (drinksData === null) {
-      alertNoImagesFound();
-    } else {
-      await renderGallery();
-    }
+
+
+  await renderGallery(dataCocktail);
+  await renderButtons(dataCocktail);
+
   }
 
   searchForm.reset();

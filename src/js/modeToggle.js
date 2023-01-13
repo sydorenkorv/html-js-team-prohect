@@ -1,6 +1,6 @@
 let darkToggle = document.querySelector('#switch');
-let modalIngr = document.querySelector('.modal-ingredient')
-let modalW = document.querySelector('.modal')
+let modalI = document.querySelector(`.modal-ingredient`)
+let modalW = document.querySelector(`.modal`)
 
 
 if (sessionStorage.getItem("mode") == "dark") {
@@ -21,8 +21,13 @@ function darkmode() {
   document.body.classList.toggle('dark');
   darkToggle.checked = true;
   sessionStorage.setItem("mode", "dark");
-  // modalIngr.style.backgroundColor = "#202025"
-  // modalW.style.backgroundColor = "#202025"
+  if( modalI.length != 0){
+  modalI.style.backgroundColor = "#202025"
+  }
+if( modalW.length != 0){
+  modalW.style.backgroundColor = "#202025"
+
+  }
 }
  
 
@@ -30,6 +35,10 @@ function lightmode() {
   document.body.classList.remove("dark");
   darkToggle.checked = false;
   sessionStorage.setItem("mode", "light")
-  //    modalIngr.removeAttribute("style")
-  //  modalW.removeAttribute("style")
+  if( modalI.length != 0){
+  modalI.removeAttribute("style")
+    }
+if( modalW.length != 0){
+  modalW.removeAttribute("style")
+    }
 }
