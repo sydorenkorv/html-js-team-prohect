@@ -14,7 +14,7 @@ async function getRandom() {
 }
 
 
-// window.onload = getRandom();
+window.onload = getRandom();
 // getRandom();
 
 export let drinksData = [];
