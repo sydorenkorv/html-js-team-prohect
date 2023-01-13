@@ -8,7 +8,7 @@ import { cocktailList, getCocktailById } from '../modals/modalAboutCocktail';
 import { getById } from '../api';
 console.log(STORAGE_KEY);
 import { renderGallery } from '../render/renderGallery';
-import { alertNoEmptySearch, alertNoImagesFound } from './search';
+
 
 
 const searchForm = document.querySelector('.header__form');
@@ -25,27 +25,43 @@ console.log(cocktailIds)
 
 submitButton.addEventListener('click',  async function (e) {
     e.preventDefault();
-      const xxxx = [];
+    const xxxx = [];
+              const name = input.value.trim();
 for (const id of cocktailIds) {
 
     const {drinks} = await getCocktailById(id);
       xxxx.push(drinks[0]);
   }
-      const name = input.value.trim();
+
     console.log(xxxx.length)
+const promises = []
+    for (let i = 0; i < xxxx.length; i++) {
 
-for (let i = 0; i < xxxx.length; i++) {
+          console.log(name)
             let drink = xxxx[i];
-        if (drink.strDrink.includes(name)){
-            const data = await getById(drink.idDrink);
-
-console.log(data)
+    if (drink.strDrink.includes(name)){ 
+            id = drink.idDrink
+            promises.push(getById(id));
+        console.log(promises)
+    
+        const pppp = (await Promise.all(promises).then(r => {
+            return r.map(v => v[0])
+        }))
+renderGallery(pppp)
 }
 
     }
-
 })
 
+// function getIngredientDate(data = []) {
+//   const promises = [];
+
+//   data.forEach(id => {
+//     promises.push(getData(id));
+//   });
+//   return Promise.all(promises).then(r => {
+//     return r.map(v => v.ingredients[0]);
+//   });
 
 
 

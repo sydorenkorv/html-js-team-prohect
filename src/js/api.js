@@ -84,5 +84,15 @@ ${id}`
 }
 
 
+// function getData(id) {
+//   return fetch(
+//     'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=' + id
+//   ).then(r => {
+//     if (r.ok) {
+//       return r.json();
+//     }
+//     throw new Error(r.statusText);
+//   });
+// }
 
 
