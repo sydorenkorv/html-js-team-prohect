@@ -11,7 +11,9 @@ async function getRandom() {
   cocktail.drinks;
   await renderGallery(cocktail.drinks);
 }
-window.onload = getRandom();
+
+
+if(window.location.href == 'http://localhost:1234/index.html'){getRandom()}
 // getRandom();
 
 // export let drinksData = [];
