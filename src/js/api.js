@@ -75,4 +75,7 @@ ${id}`
   );
   const cocktail = await response.json();
   drinksData = cocktail.drinks;
+  return cocktail.drinks
 }
+
+console.log(getById('15092'))
