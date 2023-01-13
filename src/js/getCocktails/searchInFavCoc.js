@@ -1,7 +1,44 @@
-// import { STORAGE_KEY } from '../render/favoriteCocktail';
-// import { getById } from '../api';
-// console.log(STORAGE_KEY);
-// import { renderGallery } from '../render/renderGallery';
+import {
+  getCocktailCards,
+  getFromLocalStorage,
+  STORAGE_KEY,
+  removeCard,
+} from '../render/favoriteCocktail';
+import { cocktailList, getCocktailById } from '../modals/modalAboutCocktail';
+import { getById } from '../api';
+console.log(STORAGE_KEY);
+import { renderGallery } from '../render/renderGallery';
+const searchForm = document.querySelector('.header__form');
+const input = document.querySelector('.header__search');
+const submitButton = document.querySelector('.searchButton');
+
+
+
+
+const cocktailIds = getFromLocalStorage(STORAGE_KEY);
+console.log(cocktailIds)
+
+
+
+submitButton.addEventListener('click',  async function (e) {
+    e.preventDefault();
+      const xxxx = [];
+for (const id of cocktailIds) {
+
+    const {drinks} = await getCocktailById(id);
+      xxxx.push(drinks[0]);
+  }
+      const name = input.value.trim();
+    console.log(xxxx.length)
+for (let i = 0; i < xxxx.length; i++) {
+        let drink = xxxx[i];
+        if (drink.strDrink.includes(name))
+        await getById(drink.idDrink)
+
+
+    }
+
+})
 
 
 
@@ -12,17 +49,23 @@
 // let storage = localStorage;
 // console.log(localStorage);
 
-// const idData = storage.getItem('idData');
-// console.log('idData', idData);
+// const idData = storage.getItem('cocktailsId');
+// console.log('cocktailsId', idData);
 
 // const parsedSettings = JSON.parse(idData);
-// console.log(parsedSettings);
+// console.log('parsed', parsedSettings);
+
+
 // for (const idCocteil of parsedSettings) {
-//   console.log(Number(idCocteil));
-//   const id = Number(idCocteil);
-//   getById(id);
-//   renderGallery();
+
+// console.log('get', getById(idCocteil))
+
 // }
+
+// submitButton.addEventListener('click', async function (e) {
+//   e.preventDefault();
+//     const name = input.value.trim();
+    
 
 // // Перебирающий forEach
 // theme.forEach(function (number) {

@@ -17,12 +17,14 @@ submitButton.addEventListener('click', async function (e) {
     return;
   }
 
+  else if (dataCocktail === null) {
+    alertNoImagesFound() 
+
+
+  }
   else {
-
-
-  await renderGallery(dataCocktail);
+      await renderGallery(dataCocktail);
   await renderButtons(dataCocktail);
-
   }
 
   searchForm.reset();
