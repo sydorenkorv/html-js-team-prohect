@@ -26,7 +26,7 @@ console.log(cocktailIds)
 submitButton.addEventListener('click',  async function (e) {
     e.preventDefault();
     const xxxx = [];
-              const name = input.value.trim();
+              const name = input.value.toLowerCase().trim();
 for (const id of cocktailIds) {
 
     const {drinks} = await getCocktailById(id);
@@ -39,15 +39,15 @@ const promises = []
 
           console.log(name)
             let drink = xxxx[i];
-    if (drink.strDrink.includes(name)){ 
+    if (drink.strDrink.toLowerCase().trim().includes(name)){ 
             id = drink.idDrink
-            promises.push(getById(id));
+            promises.push(await getById(id));
         console.log(promises)
     
         const pppp = (await Promise.all(promises).then(r => {
             return r.map(v => v[0])
         }))
-renderGallery(pppp)
+await renderGallery(pppp)
 }
 
     }

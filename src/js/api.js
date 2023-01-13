@@ -14,7 +14,7 @@ async function getRandom() {
 }
 
 
-if(window.location.href == `${repoURL}`){getRandom()}
+// window.onload = getRandom();
 // getRandom();
 
 export let drinksData = [];
