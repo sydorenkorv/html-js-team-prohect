@@ -19,12 +19,13 @@ addEventListener('load', async () => {
   } else {
     notFavoriteCocktail.classList.add('is-hidden');
     renderGallery(data);
+    if (getFromLocalStorage(STORAGE_KEY).length < 10) return;
     renderButtons(data);
   }
 });
 
 function deleteCard(e) {
-  if (!e.target.classList.contains('js-btn-fav')) return;
+  if (!e.target.closest('.js-btn-fav')) return;
 
   const parentEl = e.target.closest('.cocktails__list-item');
   removeCard(parentEl);

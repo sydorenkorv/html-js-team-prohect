@@ -52,7 +52,7 @@ export async function onIngredientlInfoOpenInFavorite(e) {
   toggleModalVisible(ingredientModal.parentNode);
   const targetIngredientId = cardElement.dataset.id;
   const { ingredients } = await getIngredientById(targetIngredientId);
-  console.log(ingredients);
+  // console.log(ingredients);
   createMarkup(ingredients);
 }
 
@@ -66,7 +66,7 @@ function createMarkup(ingredients = []) {
   ingredientType.textContent = ingredients[0].strType;
   ingredientDesc.textContent = ingredients[0].strDescription;
 
-  console.log(changeBtnContent(ingredientId));
+  // console.log(changeBtnContent(ingredientId));
   ingredientAddBtn.textContent = changeBtnContent(ingredients[0].idIngredient)
     ? 'Remove from favorite'
     : 'Add to favorite';
@@ -100,7 +100,7 @@ function onIngredientAddToFavorite(e) {
   const parentEl = e.target.closest('[data-id]');
   ingredientId = parentEl.dataset.id;
   changeLocalStorage(ingredientId);
-  console.log(changeBtnContent(ingredientId));
+  // console.log(changeBtnContent(ingredientId));
 
   ingredientAddBtn.textContent = changeBtnContent(ingredientId)
     ? 'Remove from favorite'
@@ -112,7 +112,7 @@ export function onIngredientRemoveFromFavoriteCard(e) {
   if (!parentEl) return;
   ingredientId = parentEl.dataset.id;
   changeLocalStorage(ingredientId);
-  console.log(changeBtnContent(ingredientId));
+  // console.log(changeBtnContent(ingredientId));
 }
 
 function changeBtnContent(cardId) {

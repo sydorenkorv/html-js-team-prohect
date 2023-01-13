@@ -6,7 +6,7 @@ burgerBtn.addEventListener('click', onMenuToggle);
 function onMenuToggle() {
   headerRef.classList.toggle('menu-active');
   onScrollToggle();
-  console.log('click');
+  // console.log('click');
 }
 
 function onScrollToggle() {

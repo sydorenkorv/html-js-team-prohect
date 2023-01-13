@@ -50,7 +50,7 @@ export async function renderGallery(drinksData) {
                   isFavorite ? 'Remove' : 'Add to'
                 }</span>
                 <svg style="${
-                  isFavorite ? 'fill: #FD5103' : 'fill: inherit'
+                  isFavorite ? 'fill: #FD5103' : 'fill: #fff'
                 }" class="cocktail-card__heart-icon" width="21" height="19">
                     <use href="${sprite}#heart"></use>
                 </svg>
@@ -62,7 +62,7 @@ export async function renderGallery(drinksData) {
   document.getElementById('listing-table').innerHTML = cocktailCardsMarkup;
 }
 
-export async function renderButtons(drinksData) {
+export function renderButtons(drinksData) {
   currentPage = 1;
 
   const options = {

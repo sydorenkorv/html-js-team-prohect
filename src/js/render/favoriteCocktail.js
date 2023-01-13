@@ -4,6 +4,8 @@ import { cocktailList, getCocktailById } from '../modals/modalAboutCocktail';
 import { getCocktailById } from '../modals/modalAboutCocktail';
 import { renderGallery, renderButtons } from './renderGallery';
 
+export const STORAGE_KEY = 'cocktailsId';
+
 function addToLocalStorage(key, value) {
   try {
     const serializedState = JSON.stringify(value);
@@ -28,8 +30,6 @@ function removeFromLocalStorage(key) {
 }
 
 cocktailList.addEventListener('click', toggleToFavoriteCocktail);
-
-export const STORAGE_KEY = 'cocktailsId';
 
 export function toggleToFavoriteCocktail(e) {
   const carrentElement = e.target.closest('.js-btn-fav');
@@ -87,7 +87,7 @@ export async function getCocktailCards() {
     cocktailCardsInfo.push(drinks[0]);
   }
 
-  console.log(cocktailCardsInfo);
+  // console.log(cocktailCardsInfo);
   return cocktailCardsInfo;
 }
 

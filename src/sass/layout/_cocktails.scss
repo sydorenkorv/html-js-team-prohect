@@ -93,20 +93,18 @@
 }
 
 .cocktail-card__box {
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media screen and (max-width: 767px) {
     padding-top: 48px;
     margin-bottom: 16px;
-      height: 105px;
-
+    height: 105px;
   }
-        @media screen and (min-width: $tablet) {
-  height: 80px;
-        }
+  @media screen and (min-width: $tablet) {
+    height: 80px;
+  }
 }
-
 
 .cocktail-card__name {
   // margin-bottom: 16px;
@@ -205,7 +203,7 @@ align-items: center;
 }
 
 .cocktail-card__heart-icon {
-  fill: inherit;
+  fill: #fd5103;
 }
 
 // .pagination {

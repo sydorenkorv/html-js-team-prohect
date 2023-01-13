@@ -7,7 +7,7 @@ import './js/modals/modalAboutIngredient';
 import './js/modeToggle';
 import './js/api';
 import './js/getCocktails/search';
-import './js/getCocktails/searchInFavCoc';
+// import './js/getCocktails/searchInFavCoc';
 // // hero
 
 // //alphabet

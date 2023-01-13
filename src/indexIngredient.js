@@ -1,3 +1,6 @@
+import './js/modals/burger-menu';
+import './js/modeToggle';
+
 import { getFromLocalStorage } from './js/localstorage';
 import ingredientCard from './hbs/ingredientCard.hbs';
 import {
@@ -60,7 +63,7 @@ async function init() {
     textElment.textContent = '';
     const response = await getIngredientDate(data);
     const markup = ingredientCard(response);
-    console.log(response);
+    // console.log(response);
     addMarkup(markup);
   } catch (error) {
     console.log(error);
