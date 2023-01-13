@@ -16,6 +16,8 @@ addEventListener('load', async () => {
   const data = await getCocktailCards();
   if (getFromLocalStorage(STORAGE_KEY).length === 0) {
     notFavoriteCocktail.classList.remove('is-hidden');
+    cocktailsListRef.remove();
+    paginationRef.remove();
   } else {
     notFavoriteCocktail.classList.add('is-hidden');
     renderGallery(data);
