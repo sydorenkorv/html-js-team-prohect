@@ -76,7 +76,7 @@ return cocktail.drinks
 export async function getById(id) {
   const response = await fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=
-${id}`
+${id}` 
   );
   const cocktail = await response.json();
   drinksData = cocktail.drinks;
