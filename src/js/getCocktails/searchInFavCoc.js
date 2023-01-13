@@ -1,28 +1,28 @@
-import { STORAGE_KEY } from '../render/favoriteCocktail';
-import { getById } from '../api';
-console.log(STORAGE_KEY);
-import { renderGallery } from '../render/renderGallery';
+// import { STORAGE_KEY } from '../render/favoriteCocktail';
+// import { getById } from '../api';
+// console.log(STORAGE_KEY);
+// import { renderGallery } from '../render/renderGallery';
 
 
 
 
-async function searchById(e) {
-  e.preventDefault();
-}
-let storage = localStorage;
-console.log(localStorage);
+// async function searchById(e) {
+//   e.preventDefault();
+// }
+// let storage = localStorage;
+// console.log(localStorage);
 
-const idData = storage.getItem('idData');
-console.log('idData', idData);
+// const idData = storage.getItem('idData');
+// console.log('idData', idData);
 
-const parsedSettings = JSON.parse(idData);
-console.log(parsedSettings);
-for (const idCocteil of parsedSettings) {
-  console.log(Number(idCocteil));
-  const id = Number(idCocteil);
-  getById(id);
-  renderGallery();
-}
+// const parsedSettings = JSON.parse(idData);
+// console.log(parsedSettings);
+// for (const idCocteil of parsedSettings) {
+//   console.log(Number(idCocteil));
+//   const id = Number(idCocteil);
+//   getById(id);
+//   renderGallery();
+// }
 
 // // Перебирающий forEach
 // theme.forEach(function (number) {
