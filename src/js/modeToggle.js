@@ -21,8 +21,8 @@ function darkmode() {
   document.body.classList.toggle('dark');
   darkToggle.checked = true;
   sessionStorage.setItem("mode", "dark");
-  modalIngr.style.backgroundColor = "#202025"
-  modalW.style.backgroundColor = "#202025"
+  // modalIngr.style.backgroundColor = "#202025"
+  // modalW.style.backgroundColor = "#202025"
 }
  
 
@@ -30,6 +30,6 @@ function lightmode() {
   document.body.classList.remove("dark");
   darkToggle.checked = false;
   sessionStorage.setItem("mode", "light")
-     modalIngr.removeAttribute("style")
-   modalW.removeAttribute("style")
+  //    modalIngr.removeAttribute("style")
+  //  modalW.removeAttribute("style")
 }
