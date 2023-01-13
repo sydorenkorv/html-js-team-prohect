@@ -8,6 +8,9 @@ import { cocktailList, getCocktailById } from '../modals/modalAboutCocktail';
 import { getById } from '../api';
 console.log(STORAGE_KEY);
 import { renderGallery } from '../render/renderGallery';
+import { alertNoEmptySearch, alertNoImagesFound } from './search';
+
+
 const searchForm = document.querySelector('.header__form');
 const input = document.querySelector('.header__search');
 const submitButton = document.querySelector('.searchButton');
@@ -30,11 +33,13 @@ for (const id of cocktailIds) {
   }
       const name = input.value.trim();
     console.log(xxxx.length)
+
 for (let i = 0; i < xxxx.length; i++) {
-        let drink = xxxx[i];
+            let drink = xxxx[i];
         if (drink.strDrink.includes(name)){
             const data = await getById(drink.idDrink);
-            renderGallery(data)
+
+console.log(data)
 }
 
     }

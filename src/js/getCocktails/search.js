@@ -31,13 +31,13 @@ submitButton.addEventListener('click', async function (e) {
   // console.log(input.value);
 });
 
-function alertNoEmptySearch() {
+export function alertNoEmptySearch() {
   Notiflix.Notify.failure(
     'The search string cannot be empty. Please specify your search query.'
   );
 }
 
-function alertNoImagesFound() {
+export function alertNoImagesFound() {
   Notiflix.Notify.failure(
     'sorry for incorrect cocktail name input. please try again.'
   );
