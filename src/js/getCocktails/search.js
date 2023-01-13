@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
 
+
 import { getByName, drinksData } from '../api';
 import { renderGallery } from '../render/renderGallery';
 const searchForm = document.querySelector('.header__form');
