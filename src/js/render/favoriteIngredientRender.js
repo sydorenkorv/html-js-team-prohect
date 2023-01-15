@@ -31,7 +31,7 @@ async function getCocktailCards() {
   return cocktailCardsInfo;
 }
 
-function createCardIngredient(data) {
+export function createCardIngredient(data) {
   let markup = data
     .map(
       ingredient => `<li class="favorite__item">
@@ -60,5 +60,7 @@ function createCardIngredient(data) {
     )
     .join('');
 
-  ingredientCardList.insertAdjacentHTML('beforeend', markup);
+  // ingredientCardList.insertAdjacentHTML('beforeend', markup);
+  ingredientCardList.innerHTML = markup;
+  // document.getElementById('listing-table').innerHTML = cocktailCardsMarkup;
 }

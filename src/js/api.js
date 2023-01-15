@@ -1,6 +1,7 @@
 import { renderGallery } from './render/renderGallery';
 import { renderButtons } from './render/renderGallery';
-const repoURL = `http://localhost:1234/index.html`
+import { getEmptycocteils } from './render/renderEmptySearch';
+const repoURL = `http://localhost:1234/index.html`;
 
 // const apiURL = 'https://thecocktaildb.com/api/json/v1/1';
 
@@ -13,7 +14,6 @@ async function getRandom() {
   await renderGallery(cocktail.drinks);
 }
 
-
 window.onload = getRandom();
 // getRandom();
 
@@ -21,14 +21,22 @@ export let drinksData = [];
 // console.log(drinksData);
 
 // render by letter mobile
-if(window.location.href == `${repoURL}`){
-const selectDdText = document.querySelector('.hero__select-list');
-selectDdText.onclick = async function (event) {
-  letter = event.target.innerHTML.toLowerCase();
-  const dataCocktail = await getData(letter);
-  await renderGallery(dataCocktail);
-  await renderButtons(dataCocktail);
-};}
+if (window.location.href == `${repoURL}`) {
+  const selectDdText = document.querySelector('.hero__select-list');
+  selectDdText.onclick = async function (event) {
+    letter = event.target.innerHTML.toLowerCase();
+    const dataCocktail = await getData(letter);
+    if (dataCocktail === null) {
+      const hren = document.querySelector('.cocktails__title');
+      hren.textContent = `Sorry, we didn't find any cocktail for you`;
+      // const hrenList = document.getElementById('listing-table');
+      return getEmptycocteils();
+    } else {
+      await renderGallery(dataCocktail);
+      await renderButtons(dataCocktail);
+    }
+  };
+}
 
 ///////////render by letter WS
 
@@ -37,10 +45,18 @@ const searchAlphabet = document.querySelectorAll('.hero__alphabets-button');
 for (var i = 0; i < searchAlphabet.length; i++) {
   searchAlphabet[i].addEventListener('click', async function () {
     const letter = this.value;
+    // console.log(letter);
     const dataCocktail = await getData(letter);
-    await renderGallery(dataCocktail);
-    await renderButtons(dataCocktail);
-
+    // console.log(dataCocktail);
+    if (dataCocktail === null) {
+      const hren = document.querySelector('.cocktails__title');
+      hren.textContent = `Sorry, we didn't find any cocktail for you`;
+      // const hrenList = document.getElementById('listing-table');
+      return getEmptycocteils();
+    } else {
+      await renderGallery(dataCocktail);
+      await renderButtons(dataCocktail);
+    }
   });
 }
 
@@ -70,19 +86,18 @@ export async function getByName(name) {
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
   );
   const cocktail = await response.json();
-return cocktail.drinks
+  return cocktail.drinks;
 }
 
 export async function getById(id) {
   const response = await fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=
-${id}` 
+${id}`
   );
   const cocktail = await response.json();
   drinksData = cocktail.drinks;
-  return cocktail.drinks
+  return cocktail.drinks;
 }
-
 
 // function getData(id) {
 //   return fetch(
@@ -94,5 +109,3 @@ ${id}`
 //     throw new Error(r.statusText);
 //   });
 // }
-
-
