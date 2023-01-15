@@ -8,50 +8,84 @@ import { cocktailList, getCocktailById } from '../modals/modalAboutCocktail';
 import { getById } from '../api';
 console.log(STORAGE_KEY);
 import { renderGallery } from '../render/renderGallery';
-
-
+import { getEmptycocteils } from '../render/renderEmptySearch';
 
 const searchForm = document.querySelector('.header__form');
 const input = document.querySelector('.header__search');
 const submitButton = document.querySelector('.searchButton');
 
-
-
-
 const cocktailIds = getFromLocalStorage(STORAGE_KEY);
-console.log(cocktailIds)
+console.log(cocktailIds);
 
-
-
-submitButton.addEventListener('click',  async function (e) {
-    e.preventDefault();
-    const xxxx = [];
-              const name = input.value.toLowerCase().trim();
-for (const id of cocktailIds) {
-
-    const {drinks} = await getCocktailById(id);
-      xxxx.push(drinks[0]);
+submitButton.addEventListener('click', async function (e) {
+  e.preventDefault();
+  const xxxx = [];
+  const name = input.value.toLowerCase().trim();
+  for (const id of cocktailIds) {
+    const { drinks } = await getCocktailById(id);
+    xxxx.push(drinks[0]);
   }
 
-    console.log(xxxx.length)
-const promises = []
-    for (let i = 0; i < xxxx.length; i++) {
+  console.log(xxxx.length);
+  const promises = [];
+  for (let i = 0; i < xxxx.length; i++) {
+    console.log(name);
+    let drink = xxxx[i];
 
-          console.log(name)
-            let drink = xxxx[i];
-    if (drink.strDrink.toLowerCase().trim().includes(name)){ 
-            const id = drink.idDrink
-            promises.push(await getById(id));
-        console.log(promises)
-    
-        const pppp = (await Promise.all(promises).then(r => {
-            return r.map(v => v[0])
-        }))
-await renderGallery(pppp)
-}
+    if (!drink.strDrink.toLowerCase().trim().includes(name)) {
+      // alertNoEmptySearch();
+      // textElment.textContent =
+      //   'This coctails has not been added to Favorite Ingredients yet.';
 
+      getEmptycocteils();
+    } else if (drink.strDrink.toLowerCase().trim().includes(name)) {
+      const id = drink.idDrink;
+      promises.push(await getById(id));
+      console.log(promises);
+
+      const pppp = await Promise.all(promises).then(r => {
+        return r.map(v => v[0]);
+      });
+      await renderGallery(pppp);
     }
-})
+  }
+});
+
+//     if (drink.strDrink.toLowerCase().include(name.toLowerCase().trim())) {
+//       // alertNoEmptySearch();
+//       // textElment.textContent =
+//       //   'This coctails has not been added to Favorite Ingredients yet.';
+//       getEmptycocteils();
+//     } else if (
+//       drink.strDrink.toLowerCase().include(name.toLowerCase().trim())
+//     ) {
+//       const id = drink.idDrink;
+//       promises.push(await getById(id));
+//       console.log(promises);
+
+//       const pppp = await Promise.all(promises).then(r => {
+//         return r.map(v => v[0]);
+//       });
+//       await renderGallery(pppp);
+//     }
+//   }
+// });
+
+// if (drink.strIngredient.toLowerCase() !== name.toLowerCase().trim()) {
+//   // alertNoEmptySearch();
+//   textElment.textContent =
+//     'This ingredient has not been added to Favorite Ingredients yet.';
+//   listIngredientEl.innerHTML = getData();
+
+//   getEmpty();
+// } else if (drink.strIngredient.toLowerCase() === name.toLowerCase().trim()) {
+//   textElment.textContent = '';
+//   const ara = [];
+//   ara.push(drink);
+//   searchForm.reset();
+
+//   return await createCardIngredient(ara);
+// }
 
 // function getIngredientDate(data = []) {
 //   const promises = [];
@@ -62,8 +96,6 @@ await renderGallery(pppp)
 //   return Promise.all(promises).then(r => {
 //     return r.map(v => v.ingredients[0]);
 //   });
-
-
 
 // async function searchById(e) {
 //   e.preventDefault();
@@ -77,7 +109,6 @@ await renderGallery(pppp)
 // const parsedSettings = JSON.parse(idData);
 // console.log('parsed', parsedSettings);
 
-
 // for (const idCocteil of parsedSettings) {
 
 // console.log('get', getById(idCocteil))
@@ -87,7 +118,6 @@ await renderGallery(pppp)
 // submitButton.addEventListener('click', async function (e) {
 //   e.preventDefault();
 //     const name = input.value.trim();
-    
 
 // // Перебирающий forEach
 // theme.forEach(function (number) {
