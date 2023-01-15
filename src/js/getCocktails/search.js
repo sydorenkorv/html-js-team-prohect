@@ -7,6 +7,7 @@ const searchForm = document.querySelector('.header__form');
 const input = document.querySelector('.header__search');
 const submitButton = document.querySelector('.searchButton');
 const hren = document.querySelector('.cocktails__title');
+const hrenList = document.getElementById('listing-table');
 
 submitButton.addEventListener('click', async function (e) {
   e.preventDefault();
@@ -14,16 +15,18 @@ submitButton.addEventListener('click', async function (e) {
   const dataCocktail = await getByName(name);
   console.log(dataCocktail);
   if (name === '') {
-    hren.textContent = `Coctails`;
-    getEmptycocteils();
+    // hren.textContent = `Sorry, we didn't find any cocktail for you`;
+    // getEmptycocteils();
     alertNoEmptySearch();
     return;
   } else if (dataCocktail === null) {
-    hren.textContent = `Coctails`;
-    getEmptycocteils;
+    hren.textContent = `Sorry, we didn't find any cocktail for you`;
+      clearAll();
+    getEmptycocteils();
+
     alertNoImagesFound();
   } else {
-    hren.textContent = `Coctails`;
+    hren.textContent = `Cocktails`;
     await renderGallery(dataCocktail);
     await renderButtons(dataCocktail);
   }
@@ -31,3 +34,10 @@ submitButton.addEventListener('click', async function (e) {
   searchForm.reset();
   // console.log(input.value);
 });
+
+
+function clearAll() {
+  while (hrenList.firstChild) {
+    hrenList.firstChild.remove();
+  }
+}

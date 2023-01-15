@@ -1,10 +1,10 @@
 // import '../../images/regret/regret-desktop.png';
 import imagesD1 from '../../images/regret/regret-desktop.png';
-import imagesD2 from '../../images/regret/regret-desktop.png';
-import imagesT1 from '../../images/regret/regret-desktop.png';
-import imagesT2 from '../../images/regret/regret-desktop.png';
-import imagesM1 from '../../images/regret/regret-desktop.png';
-import imagesM2 from '../../images/regret/regret-desktop.png';
+import imagesD2 from '../../images/regret/regret-desktop@2x.png';
+import imagesT1 from '../../images/regret/regret-tablet.png';
+import imagesT2 from '../../images/regret/regret-tablet.png';
+import imagesM1 from '../../images/regret/regret-mobile.png';
+import imagesM2 from '../../images/regret/regret-mobile@2x.png';
 export let emptyImg = document.createElement('IMG');
 
 const listIngredientEl = document.querySelector('.favorite__list-ingredient');
