@@ -8,6 +8,7 @@ const input = document.querySelector('.header__search');
 const submitButton = document.querySelector('.searchButton');
 const hren = document.querySelector('.cocktails__title');
 const hrenList = document.getElementById('listing-table');
+const paginationList = document.querySelector('.tui-pagination')
 
 submitButton.addEventListener('click', async function (e) {
   e.preventDefault();
@@ -21,7 +22,8 @@ submitButton.addEventListener('click', async function (e) {
     return;
   } else if (dataCocktail === null) {
     hren.textContent = `Sorry, we didn't find any cocktail for you`;
-      clearAll();
+    clearAll();
+    clearButtons();
     getEmptycocteils();
 
     alertNoImagesFound();
@@ -39,5 +41,12 @@ submitButton.addEventListener('click', async function (e) {
 function clearAll() {
   while (hrenList.firstChild) {
     hrenList.firstChild.remove();
+  }
+}
+
+
+function clearButtons() {
+  while (paginationList.firstChild) {
+    paginationList.firstChild.remove();
   }
 }
