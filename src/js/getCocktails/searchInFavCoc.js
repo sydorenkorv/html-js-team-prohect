@@ -29,18 +29,16 @@ submitButton.addEventListener('click', async function (e) {
   console.log(xxxx.length);
   const promises = [];
   for (let i = 0; i < xxxx.length; i++) {
-    // console.log(name);
+    console.log(name);
     let drink = xxxx[i];
 
-    console.log(drink.strDrink);
-    console.log(name);
-
-    if (drink.strDrink.toLowerCase() !== name.toLowerCase().trim()) {
+    if (!drink.strDrink.toLowerCase().trim().includes(name)) {
       // alertNoEmptySearch();
       // textElment.textContent =
       //   'This coctails has not been added to Favorite Ingredients yet.';
+
       getEmptycocteils();
-    } else if (drink.strDrink.toLowerCase() === name.toLowerCase().trim()) {
+    } else if (drink.strDrink.toLowerCase().trim().includes(name)) {
       const id = drink.idDrink;
       promises.push(await getById(id));
       console.log(promises);
@@ -52,6 +50,26 @@ submitButton.addEventListener('click', async function (e) {
     }
   }
 });
+
+//     if (drink.strDrink.toLowerCase().include(name.toLowerCase().trim())) {
+//       // alertNoEmptySearch();
+//       // textElment.textContent =
+//       //   'This coctails has not been added to Favorite Ingredients yet.';
+//       getEmptycocteils();
+//     } else if (
+//       drink.strDrink.toLowerCase().include(name.toLowerCase().trim())
+//     ) {
+//       const id = drink.idDrink;
+//       promises.push(await getById(id));
+//       console.log(promises);
+
+//       const pppp = await Promise.all(promises).then(r => {
+//         return r.map(v => v[0]);
+//       });
+//       await renderGallery(pppp);
+//     }
+//   }
+// });
 
 // if (drink.strIngredient.toLowerCase() !== name.toLowerCase().trim()) {
 //   // alertNoEmptySearch();
