@@ -2,6 +2,7 @@ import { renderButtons } from '../render/renderGallery';
 import { getByName } from '../api';
 import { renderGallery } from '../render/renderGallery';
 import { alertNoEmptySearch, alertNoImagesFound } from '../../notifyAlert';
+import { getEmptycocteils } from '../render/renderEmptySearch';
 const searchForm = document.querySelector('.header__form');
 const input = document.querySelector('.header__search');
 const submitButton = document.querySelector('.searchButton');
@@ -14,10 +15,12 @@ submitButton.addEventListener('click', async function (e) {
   console.log(dataCocktail);
   if (name === '') {
     hren.textContent = `Coctails`;
+    getEmptycocteils();
     alertNoEmptySearch();
     return;
   } else if (dataCocktail === null) {
     hren.textContent = `Coctails`;
+    getEmptycocteils;
     alertNoImagesFound();
   } else {
     hren.textContent = `Coctails`;

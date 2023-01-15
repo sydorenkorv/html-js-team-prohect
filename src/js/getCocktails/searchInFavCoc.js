@@ -8,6 +8,7 @@ import { cocktailList, getCocktailById } from '../modals/modalAboutCocktail';
 import { getById } from '../api';
 console.log(STORAGE_KEY);
 import { renderGallery } from '../render/renderGallery';
+import { getEmptycocteils } from '../render/renderEmptySearch';
 
 const searchForm = document.querySelector('.header__form');
 const input = document.querySelector('.header__search');
@@ -28,9 +29,18 @@ submitButton.addEventListener('click', async function (e) {
   console.log(xxxx.length);
   const promises = [];
   for (let i = 0; i < xxxx.length; i++) {
-    console.log(name);
+    // console.log(name);
     let drink = xxxx[i];
-    if (drink.strDrink.toLowerCase().trim().includes(name)) {
+
+    console.log(drink.strDrink);
+    console.log(name);
+
+    if (drink.strDrink.toLowerCase() !== name.toLowerCase().trim()) {
+      // alertNoEmptySearch();
+      // textElment.textContent =
+      //   'This coctails has not been added to Favorite Ingredients yet.';
+      getEmptycocteils();
+    } else if (drink.strDrink.toLowerCase() === name.toLowerCase().trim()) {
       const id = drink.idDrink;
       promises.push(await getById(id));
       console.log(promises);
@@ -42,6 +52,22 @@ submitButton.addEventListener('click', async function (e) {
     }
   }
 });
+
+// if (drink.strIngredient.toLowerCase() !== name.toLowerCase().trim()) {
+//   // alertNoEmptySearch();
+//   textElment.textContent =
+//     'This ingredient has not been added to Favorite Ingredients yet.';
+//   listIngredientEl.innerHTML = getData();
+
+//   getEmpty();
+// } else if (drink.strIngredient.toLowerCase() === name.toLowerCase().trim()) {
+//   textElment.textContent = '';
+//   const ara = [];
+//   ara.push(drink);
+//   searchForm.reset();
+
+//   return await createCardIngredient(ara);
+// }
 
 // function getIngredientDate(data = []) {
 //   const promises = [];

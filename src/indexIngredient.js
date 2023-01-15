@@ -8,12 +8,12 @@ import {
   onIngredientRemoveFromFavoriteCard,
 } from './js/modals/modalAboutIngredient';
 import { createCardIngredient } from './js/render/favoriteIngredientRender';
-import imagesD1 from './images/regret/regret-desktop.png';
-import imagesD2 from './images/regret/regret-desktop.png';
-import imagesT1 from './images/regret/regret-desktop.png';
-import imagesT2 from './images/regret/regret-desktop.png';
-import imagesM1 from './images/regret/regret-desktop.png';
-import imagesM2 from './images/regret/regret-desktop.png';
+// import imagesD1 from './images/regret/regret-desktop.png';
+// import imagesD2 from './images/regret/regret-desktop.png';
+// import imagesT1 from './images/regret/regret-desktop.png';
+// import imagesT2 from './images/regret/regret-desktop.png';
+// import imagesM1 from './images/regret/regret-desktop.png';
+// import imagesM2 from './images/regret/regret-desktop.png';
 import { getEmpty } from './js/render/renderEmptySearch';
 
 const listIngredientEl = document.querySelector('.favorite__list-ingredient');
@@ -88,8 +88,8 @@ const submitButton = document.querySelector('.searchButton');
 const INGREDIENT_KEY = 'ingredientsId';
 const favIngredsId = getFromLocalStorage(INGREDIENT_KEY);
 
-console.log(favIngredsId);
-console.log(getData('440'));
+// console.log(favIngredsId);
+// console.log(getData('440'));
 
 submitButton.addEventListener('click', async function (e) {
   e.preventDefault();
@@ -115,7 +115,7 @@ submitButton.addEventListener('click', async function (e) {
       // alertNoEmptySearch();
       textElment.textContent =
         'This ingredient has not been added to Favorite Ingredients yet.';
-      listIngredientEl.innerHTML = '';
+      listIngredientEl.innerHTML = getData();
 
       getEmpty();
     } else if (

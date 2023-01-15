@@ -10,7 +10,7 @@ export let emptyImg = document.createElement('IMG');
 const listIngredientEl = document.querySelector('.favorite__list-ingredient');
 
 export function getEmpty() {
-  listIngredientEl.innerHTML = `<li><img src="${imagesD1}" srcset="${imagesM2}  336w,
+  listIngredientEl.innerHTML = `<li><img src="${imagesD1}" srcset=" ${imagesM1}  280w, ${imagesM2}  336w,
         ${imagesT1}  560w,
         ${imagesT2}  672w,
         ${imagesD1}  501w,
@@ -23,7 +23,7 @@ export function getEmpty() {
 
 export function getEmptycocteils() {
   const hrenList = document.getElementById('listing-table');
-  hrenList.innerHTML = `<li><img src="${imagesD1}" srcset="${imagesM2}  336w,
+  hrenList.innerHTML = `<li><img src="${imagesD1}" srcset=" ${imagesM1}  280w, ${imagesM2}  336w,
         ${imagesT1}  560w,
         ${imagesT2}  672w,
         ${imagesD1}  501w,
