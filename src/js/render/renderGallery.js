@@ -11,7 +11,7 @@ const container = document.getElementById('tui-pagination-container');
 // Init pagination
 
 
-let currentPage = 1;
+
 
 export async function renderGallery(drinksData) {
   let cocktailCardsMarkup = '';
@@ -22,6 +22,7 @@ export async function renderGallery(drinksData) {
   // console.log('data', test);
 
   drinksData.filter((cocktail, index) => {
+    let currentPage = 1;
       let start = (currentPage - 1) * calcCardsPerPage();
       let end = currentPage * calcCardsPerPage();
       // console.log(drinksData);
