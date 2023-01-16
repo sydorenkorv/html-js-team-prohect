@@ -81,6 +81,9 @@ const searchAlphabet = document.querySelectorAll('.hero__alphabets-button');
 
 // }
 
+
+
+////
 // // clear gallery content
 
 function clearAll() {
