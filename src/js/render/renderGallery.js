@@ -12,7 +12,7 @@ const container = document.getElementById('tui-pagination-container');
 
 let cardsPerPage = calcCardsPerPage();
 
-let currentPage = 1;
+const currentPage = 1;
 
 export async function renderGallery(drinksData) {
   let cocktailCardsMarkup = '';
@@ -64,7 +64,7 @@ export function renderButtons(drinksData) {
 
   const options = {
     totalItems: drinksData.length,
-    itemsPerPage: cardsPerPage,
+    itemsPerPage: calcCardsPerPage(),
     visiblePages: 3,
     page: 1,
     centerAlign: false,
