@@ -21,14 +21,10 @@ export async function renderGallery(drinksData) {
   // temporary variable to check pagination
   // test = [...drinksData, ...drinksData, ...drinksData];
   // console.log('data', test);
-
-  drinksData.filter((cocktail, index) => {
       let start = (currentPage - 1) * cardsPerPage;
-      let end = currentPage * cardsPerPage;
-      // console.log(drinksData);
-
-      if (index >= start && index < end) return true;
-    })
+  let end = currentPage * cardsPerPage;
+  
+  drinksData.slice(start, end)
     .forEach(drink => {
       const isFavorite = changeBtnContent(drink.idDrink);
       cocktailCardsMarkup += `<li class="cocktails__list-item">
@@ -57,8 +53,9 @@ export async function renderGallery(drinksData) {
             </button>
         </div>
     </div>
-</li>`;
-    });
+</li>`
+    })
+    
   document.getElementById('listing-table').innerHTML = cocktailCardsMarkup;
 }
 
