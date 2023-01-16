@@ -10,7 +10,6 @@ const container = document.getElementById('tui-pagination-container');
 
 // Init pagination
 
-let cardsPerPage = calcCardsPerPage();
 
 let currentPage = 1;
 
@@ -23,8 +22,8 @@ export async function renderGallery(drinksData) {
   // console.log('data', test);
 
   drinksData.filter((cocktail, index) => {
-      let start = (currentPage - 1) * cardsPerPage;
-      let end = currentPage * cardsPerPage;
+      let start = (currentPage - 1) * calcCardsPerPage();
+      let end = currentPage * calcCardsPerPage();
       // console.log(drinksData);
 
       if (index >= start && index < end) return true;
@@ -67,7 +66,7 @@ export function renderButtons(drinksData) {
 
   const options = {
     totalItems: drinksData.length,
-    itemsPerPage: cardsPerPage,
+    itemsPerPage: calcCardsPerPage(),
     visiblePages: 3,
     page: 1,
     centerAlign: false,
