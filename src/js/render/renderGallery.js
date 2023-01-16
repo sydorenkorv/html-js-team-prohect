@@ -11,25 +11,19 @@ const container = document.getElementById('tui-pagination-container');
 // Init pagination
 
 
+let currentPage = 1;
 
 
 export async function renderGallery(drinksData) {
   let cocktailCardsMarkup = '';
   console.log(drinksData)
 
+
   // temporary variable to check pagination
   // test = [...drinksData, ...drinksData, ...drinksData];
   // console.log('data', test);
 
-  drinksData.filter((cocktail, index) => {
-    let currentPage = 1;
-      let start = (currentPage - 1) * calcCardsPerPage();
-      let end = currentPage * calcCardsPerPage();
-      // console.log(drinksData);
-
-      if (index >= start && index < end) return true;
-    })
-    .forEach(drink => {
+  drinksData.forEach(drink => {
       const isFavorite = changeBtnContent(drink.idDrink);
       cocktailCardsMarkup += `<li class="cocktails__list-item">
     <div class="cocktail-card" data-id="${drink.idDrink}">
