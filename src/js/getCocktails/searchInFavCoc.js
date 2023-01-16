@@ -3,12 +3,12 @@ import {
   getFromLocalStorage,
   STORAGE_KEY,
   removeCard,
-} from '../render/favoriteCocktail';
-import { cocktailList, getCocktailById } from '../modals/modalAboutCocktail';
-import { getById } from '../api';
+} from './render/favoriteCocktail';
+import { cocktailList, getCocktailById } from './modals/modalAboutCocktail';
+import { getById } from './api';
 console.log(STORAGE_KEY);
-import { renderGallery } from '../render/renderGallery';
-import { getEmptycocteils } from '../render/renderEmptySearch';
+import { renderGallery } from './render/renderGallery';
+import { getEmptycocteils } from './render/renderEmptySearch';
 
 const searchForm = document.querySelector('.header__form');
 const input = document.querySelector('.header__search');
