@@ -60,7 +60,7 @@ export async function renderGallery(drinksData) {
 }
 
 export function renderButtons(drinksData) {
-  // currentPage = 1;
+  currentPage = 1;
 
   const options = {
     totalItems: drinksData.length,
