@@ -22,7 +22,7 @@ export async function renderGallery(drinksData) {
   // test = [...drinksData, ...drinksData, ...drinksData];
   // console.log('data', test);
       let start = 0;
-  let end = currentPage * cardsPerPage;
+  let end = calcCardsPerPage();
   
   drinksData.slice(start, end)
     .forEach(drink => {
