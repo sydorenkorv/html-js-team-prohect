@@ -21,7 +21,7 @@ export async function renderGallery(drinksData) {
   // temporary variable to check pagination
   // test = [...drinksData, ...drinksData, ...drinksData];
   // console.log('data', test);
-      let start = (currentPage - 1) * cardsPerPage;
+      let start = (currentPage-1) * cardsPerPage;
   let end = currentPage * cardsPerPage;
   
   drinksData.slice(start, end)
