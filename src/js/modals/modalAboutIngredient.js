@@ -20,7 +20,7 @@ const ingredientInfo = document.querySelector('.js-ingredient-info');
 const ingredientAddBtn = document.querySelector('.js-ingredient-add-btn');
 const ingredientCardList = document.querySelector('.favorite__list-ingredient');
 
-const INGREDIENT_KEY = 'ingredientsId';
+export const INGREDIENT_KEY = 'ingredientsId';
 
 cocktailIngredientsList.addEventListener('click', onIngredientlInfoOpen);
 ingredientModalCloseBtn.addEventListener('click', onIngredientlInfoClose);
@@ -140,7 +140,7 @@ function changeLocalStorage(Id) {
   }
 }
 
-async function getIngredientById(id) {
+export async function getIngredientById(id) {
   try {
     const response = await axios.get(
       `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${id}`
